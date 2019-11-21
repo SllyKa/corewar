@@ -3,31 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lshanaha <lshanaha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 13:03:10 by lshanaha          #+#    #+#             */
-/*   Updated: 2019/01/14 17:38:32 by lshanaha         ###   ########.fr       */
+/*   Created: 2018/11/22 17:15:11 by gbrandon          #+#    #+#             */
+/*   Updated: 2018/11/28 10:11:30 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <string.h>
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char *dest_st;
-	unsigned char *src_st;
+	size_t				i;
+	unsigned char		*char_dst;
+	unsigned char		*char_src;
 
-	dest_st = (unsigned char *)dest;
-	src_st = (unsigned char *)src;
-	while (n--)
+	i = 0;
+	char_dst = (unsigned char*)dst;
+	char_src = (unsigned char*)src;
+	while (i < n)
 	{
-		*dest_st = *src_st;
-		dest_st++;
-		if (*src_st == (unsigned char)c)
-			return ((void *)dest_st);
-		src_st++;
+		*char_dst = *char_src;
+		if (*char_dst == (unsigned char)c)
+		{
+			return (char_dst + 1);
+		}
+		char_dst++;
+		char_src++;
+		i++;
 	}
-	if (dest == src)
-		return (dest);
 	return (NULL);
 }

@@ -19,6 +19,7 @@ NAME= corewar
 LIBDIR= libftprintf
 LIB= libftprintf.a
 LIBHEADER=libftprintf.h
+LIBHEADERDIR=libftprintf/includes 
 GNLHEADER=get_next_line.h
 AVLTHEADER=avlt.h
 LIBSHORT= ftprintf
@@ -45,14 +46,14 @@ debug: $(NAME)
 #
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CC_FLAGS) $(OBJS) -o $@ -I$(HEADERDIR) -I$(LIBDIR) -L$(LIBDIR) -l$(LIBSHORT)
+	$(CC) $(CC_FLAGS) $(OBJS) -o $@ -I$(HEADERDIR) -I$(LIBHEADERDIR) -L$(LIBDIR) -l$(LIBSHORT)
 
 $(LIB):
 	cd $(LIBDIR) && $(MAKE) -s
 
 $(OBJS): $(OBJSDIR)/%.o : $(SRCSDIR)/%.c $(HEADERDIR)/$(HEADER)
 	mkdir -p $(OBJSDIR)
-	$(CC) $(CC_FLAGS) -I$(HEADERDIR) -I$(LIBDIR) -c $< -o $@
+	$(CC) $(CC_FLAGS) -I$(HEADERDIR) -I$(LIBHEADERDIR) -c $< -o $@
 
 #
 #	Clean

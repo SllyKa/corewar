@@ -6,11 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:23:20 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/21 12:23:40 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/21 18:08:01 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		main(int argc, char **argv)
 {
+	(void)argc;
+	(void)argv;
 	return (0);
 }

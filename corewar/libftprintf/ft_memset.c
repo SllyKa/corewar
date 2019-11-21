@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lshanaha <lshanaha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 16:22:29 by lshanaha          #+#    #+#             */
-/*   Updated: 2019/01/14 17:38:48 by lshanaha         ###   ########.fr       */
+/*   Created: 2018/11/21 13:00:56 by gbrandon          #+#    #+#             */
+/*   Updated: 2018/12/06 11:06:32 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include <string.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *dest, int c, size_t len)
 {
-	char			*arr;
-	unsigned char	byte;
+	unsigned char	uc;
 	size_t			i;
+	char			*dest_al;
 
-	arr = (char *)s;
-	byte = (unsigned char)c;
+	uc = (unsigned char)c;
 	i = 0;
-	while (i < n)
-		arr[i++] = byte;
-	return (s);
+	dest_al = (char*)dest;
+	while (i < len)
+	{
+		*dest_al = uc;
+		i++;
+		dest_al++;
+	}
+	return (dest);
 }

@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lshanaha <lshanaha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/24 16:33:00 by lshanaha          #+#    #+#             */
-/*   Updated: 2019/01/14 17:38:30 by lshanaha         ###   ########.fr       */
+/*   Created: 2018/11/28 11:51:38 by gbrandon          #+#    #+#             */
+/*   Updated: 2019/11/21 14:18:31 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
 #include <stdlib.h>
+#include <string.h>
 
 void	*ft_memalloc(size_t size)
 {
-	void	*arr;
+	void	*new_ptr;
+	size_t	i;
 
-	arr = malloc(size);
-	if (arr)
-		return (ft_memset(arr, 0, size));
-	else
-		return (0);
+	i = 0;
+	new_ptr = malloc(size);
+	if (!new_ptr)
+		return (NULL);
+	while (i < size)
+	{
+		((char*)new_ptr)[i] = 0;
+		i++;
+	}
+	return (new_ptr);
 }

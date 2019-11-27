@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:23:20 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 21:09:00 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:24:23 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		main(int argc, char **argv)
 	plrs = add_plrdata(plrs, 5, "llll", 4);
 	arena = cw_arena_init(plrs);
 	cw_vm_memdump(arena);
+	arena->prcs = cw_prcs_init(plrs);
+	
 
 	return (0);
 }

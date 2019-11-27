@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_wm_core_memdump.c                               :+:      :+:    :+:   */
+/*   cw_vm_core_registers.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 16:12:25 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 18:18:40 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/11/27 16:36:06 by gbrandon          #+#    #+#             */
+/*   Updated: 2019/11/27 17:02:06 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_vm_memdump(t_vm *arena)
+char	*r_mov(char *reg, void *data, size_t size)
 {
-	size_t				i;
-	size_t				oct_num;
-	unsigned char		*arena_f;
+	int		st;
 
-	i = 0;
-	oct_num = 32;
-	arena_f = arena->field;
-	while (i < arena->field_size)
+	st = REG_SIZE - size;
+	if (st = 0)
+		reg = ft_memcpy(reg, data, size);
+	else if (st > 0)
+		reg = ft_memcpy(reg[st - 1], data, size);
+	else if (st < 0)
 	{
-		if ((i == 0) || (i % 32 == 0))
-			ft_printf("\n0x%0.4x : ", i);
-		ft_printf("%.2x", *arena_f);
-		arena_f++;
-		i++;
-		if (i % 32 != 0)
-			ft_printf(" ");
+		st *= -1;
+		reg = ft_memcpy(reg, data + (st - 1), st);
 	}
-	ft_printf("\n");
+	return (reg);
 }

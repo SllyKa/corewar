@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 21:31:05 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:08:20 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char			**init_regs(int r1)
 		i++;
 	}
 	r1 *= -1;
-	ft_memcpy(new_regs[0], &r1, 4);
+	new_regs[0] = r_mov(new_regs[0], &r1, 4);
 	new_regs[i] = NULL;
 	return (new_regs);
 }
@@ -42,6 +42,7 @@ t_prcs			*init_process_start(int r1)
 	new_prcs->waitcycle = 0;
 	new_prcs->nextop = 0;
 	new_prcs->regs = init_regs(r1);
+	new_prcs->next = NULL;
 	return (new_prcs);
 }
 
@@ -57,6 +58,7 @@ t_prcs			*init_process_cpy(t_prcs *src)
 	new_prcs->waitcycle = src->waitcycle;
 	new_prcs->nextop = 0;
 	new_prcs->regs = src->regs;
+	new_prcs->next = NULL;
 	return (new_prcs);
 }
 

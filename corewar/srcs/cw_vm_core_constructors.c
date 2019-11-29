@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/27 17:08:20 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/29 20:45:28 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char			**init_regs(int r1)
 	int		i;
 
 	new_regs = (char**)malloc(sizeof(char*) * (REG_NUMBER + 1));
-	i = 1;
+	i = 0;
 	while (i < REG_NUMBER)
 	{
 		new_regs[i] = (char*)ft_memalloc(sizeof(char) * (REG_SIZE + 1));
@@ -30,14 +30,14 @@ char			**init_regs(int r1)
 	return (new_regs);
 }
 
-t_prcs			*init_process_start(int r1)
+t_prcs			*init_process_start(int r1, size_t pc)
 {
 	t_prcs		*new_prcs;
 
 	new_prcs = (t_prcs*)malloc(sizeof(t_prcs));
 	new_prcs->carry = 0;
-	new_prcs->pc = 0;
-	new_prcs->curpos = 0;
+	new_prcs->pc = pc;
+	new_prcs->curop = 0;
 	new_prcs->livecycle = 0;
 	new_prcs->waitcycle = 0;
 	new_prcs->nextop = 0;
@@ -52,8 +52,8 @@ t_prcs			*init_process_cpy(t_prcs *src)
 
 	new_prcs = (t_prcs*)malloc(sizeof(t_prcs));
 	new_prcs->carry = src->carry;
-	new_prcs->pc = 0;
-	new_prcs->curpos = src->curpos;
+	new_prcs->pc = src->pc;
+	new_prcs->curop = src->curop;
 	new_prcs->livecycle = src->livecycle;
 	new_prcs->waitcycle = src->waitcycle;
 	new_prcs->nextop = 0;

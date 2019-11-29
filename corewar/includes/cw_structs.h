@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 21:33:15 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/29 20:38:04 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ typedef struct	s_prcs
 {
 	char			carry;
 	//int		cuid;
-	int				pc;
+	size_t			pc;
 	int				livecycle;
 	int				waitcycle;
-	int				curpos;
+	unsigned char	curop;
 	int				nextop;
 	char			**regs;
 	struct s_prcs	*next;	
@@ -36,7 +36,7 @@ typedef struct	s_vm
 	size_t			players;
 	unsigned char	*field;
 	size_t			field_size;
-	t_list			*prcs;
+	t_prcs			*prcs;
 }				t_vm;
 
 typedef struct	s_plr_ardata
@@ -46,5 +46,17 @@ typedef struct	s_plr_ardata
 	size_t				data_size;
 	struct s_plr_ardata	*next;
 }				t_plr_ardata;
+
+typedef struct	s_op
+{
+	char			*name;
+	unsigned char	argnumm;
+	t_arg_type		argtype[3];
+	unsigned char	opcode;
+	int				wait;
+	char			*descript;
+	char			usecarry;
+	char			isadress;
+}				t_op;
 
 #endif

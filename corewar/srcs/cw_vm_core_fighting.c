@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/29 21:51:12 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/30 18:20:59 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ extern t_op op_tab[17];
 static void	read_operation(unsigned char *field, t_prcs *prc)
 {
 	prc->curop = deref_pntr(field, prc->pc);
-	if (prc->curop >= 1 && prc->curop <= 16)
-		prc->waitcycle = op_tab[prc->curop].wait;
+	if (chk_opcode(prc->curop) > 0)
+		prc->waitcycle = op_tab[prc->curop - 1].wait;
 	else
 		prc->waitcycle = 0;
 	ft_printf("uid: %d\n", r_geti(prc->regs[0]));
@@ -42,7 +42,7 @@ int			cw_fight(t_vm *vm)
 			if (prcs_head->waitcycle > 0)
 				(prcs_head->waitcycle)--;
 			if (prcs_head->waitcycle == 0)
-				exec_ops(prcs_head);
+				check_opsign(vm, prcs_head);
 			prcs_head = prcs_head->next;
 		}
 		i++;

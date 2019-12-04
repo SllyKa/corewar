@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:23:20 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/30 18:40:54 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:09:55 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int argc, char **argv)
 	plrs = add_plrdata(plrs, 2, "!@#$sdgfg^&*", 12);
 	plrs = add_plrdata(plrs, 3, "dsgdsgbdsbdsbdsbdsghdshwerpisdfkpew,sf", 38);
 	plrs = add_plrdata(plrs, 4, "dskogmnwovmekwmvodsmvo;mdonvsdxc&*(", 35);
-	plrs = add_plrdata(plrs, 5, "\x01\x90llll", 6);
+	plrs = add_plrdata(plrs, 5, "\x01\x0\x80\x80\x80llll", 9);
 	arena = cw_arena_init(plrs);
 	cw_vm_memdump(arena);
 	arena->prcs = cw_prcs_init(arena, plrs);

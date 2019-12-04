@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 15:48:34 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 16:01:11 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:18:34 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static t_plr_ardata	*init_plrardata(int uid, char *data, size_t data_size)
 
 	new_plrdata = (t_plr_ardata*)malloc(sizeof(t_plr_ardata));
 	new_plrdata->uid = uid;
+	//new_plrdata->name = ...
+	//new_plrdata->liven = 0;
 	new_plrdata->data = data;
 	new_plrdata->data_size = data_size;
 	new_plrdata->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:36:06 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/29 21:51:26 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/04 18:44:31 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ char	*r_mov(char *reg, void *data, size_t size)
 		reg = ft_memcpy(reg, data + (st - 1), st);
 	}
 	return (reg);
+}
+
+unsigned char	*r_get(char *reg)
+{
+	unsigned char	*res;
+
+	res = ft_memalloc(REG_SIZE + 1);
+	res = ft_memcpy(res, reg, REG_SIZE);
+	return (res);
+}
+
+void	*free_rget(unsigned char *val)
+{
+	free(val);
+	val = NULL;
+	return (val);
 }
 
 int		r_geti(char *reg)

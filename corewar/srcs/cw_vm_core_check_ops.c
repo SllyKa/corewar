@@ -6,13 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/30 19:02:48 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:48:34 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-extern t_op op_tab[17];
+extern t_op g_op_tab[17];
 
 static unsigned char	typebyte_to_arg_type(unsigned char arg)
 {
@@ -32,19 +32,19 @@ static int				chk_types_byte(unsigned char opcode, unsigned char typebyte)
 	unsigned char	arg;
 
 	if (!(arg = typebyte_to_arg_type((typebyte >> 6) & 3))
-	&& (op_tab[opcode - 1].argtype[0]))
+	&& (g_op_tab[opcode - 1].argtype[0]))
 		return (-1);
-	if ((arg & op_tab[opcode - 1].argtype[0]) != arg)
+	if ((arg & g_op_tab[opcode - 1].argtype[0]) != arg)
 		return (-1);
 	if (!(arg = typebyte_to_arg_type((typebyte >> 4) & 3))
-	&& (op_tab[opcode - 1].argtype[1]))
+	&& (g_op_tab[opcode - 1].argtype[1]))
 		return (-1);
-	if ((arg & op_tab[opcode - 1].argtype[1]) != arg)
+	if ((arg & g_op_tab[opcode - 1].argtype[1]) != arg)
 		return (-1);
 	if (!(arg = typebyte_to_arg_type((typebyte >> 2) & 3))
-	&& (op_tab[opcode - 1].argtype[2]))
+	&& (g_op_tab[opcode - 1].argtype[2]))
 		return (-1);
-	if ((arg & op_tab[opcode - 1].argtype[2]) != arg)
+	if ((arg & g_op_tab[opcode - 1].argtype[2]) != arg)
 		return (-1);
 	return (1);
 }
@@ -89,17 +89,20 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 
 	typebyte = deref_pntr(vm->field, vm_add_address(prc->pc, 1));
 	if (chk_opcode(prc->curop) < 0)
-	{
 		prc->pc = vm_add_address(prc->pc, 1);
-		ft_printf("bad op code =(\n");
-	}
 	else
 	{
-		if (chk_types_byte(prc->curop, typebyte) < 0)
+		if (g_op_tab[prc->curop - 1].argnum != 1 &&
+		chk_types_byte(prc->curop, typebyte) < 0)
 			prc->pc = vm_add_address(prc->pc, pass_bytes(typebyte));
 		else
 		{
-			ft_printf("cool!\n");
+			//mb lift it up ?
+			if (g_op_tab[prc->curop - 1].opcode == 1)
+			{
+				live(vm, prc);
+				prc->pc = vm_add_address(prc->pc, pass_bytes(typebyte));
+			}
 			//exec_op();
 		}
 	}

@@ -18,6 +18,7 @@
 # include "op.h"
 # include "libftprintf.h"
 # include "cw_structs.h"
+#include "cw_visual.h"
 
 # define	CODE_REG_SIZE	1
 

@@ -4,8 +4,6 @@
 
 
 
-
-
 void make_colors()
 {
 	init_pair(1,2,0);
@@ -23,14 +21,13 @@ void init_visual()
 	curs_set(false);
 	cbreak();
 	noecho();
-	timeout(10000);
+	timeout(5);
 	use_default_colors();
 	start_color();
 	printf("colors: %d\n", COLORS);
-	init_mem_window();
-	init_info_window();
+	init_window();
 	make_colors();
-	wattron(get_mem_window(), COLOR_PAIR(1) );
+	// wattron(get_window(), COLOR_PAIR(1) );
 }
 
 

@@ -2,6 +2,7 @@
 
 #include "corewar.h"
 
+
 void cw_vs_print_memory(unsigned char *arena)
 {
 	int i;
@@ -10,7 +11,7 @@ void cw_vs_print_memory(unsigned char *arena)
 	int y;
 
 	i = 0;
-	win = get_mem_window();
+	win = get_window();
 	box(win, '*' | A_STANDOUT, '*' | A_STANDOUT);
 	while (i < MEM_SIZE)
 	{
@@ -24,20 +25,18 @@ void cw_vs_print_memory(unsigned char *arena)
 
 
 
+double g_delay;
 void cw_vs_print_info(t_vm* vm)
 {
 	WINDOW	*win;
 
-	win = get_info_window();
-	// printf("%p\n", win);
-	// wclear(win);
-	// werase(win);
-	box(win, 0, 0);
-	wmove(win, 3, 3);
+	win = get_window();
+	wmove(win, 3, MEM_WIDTH + 4);
 	wprintw(win, "Cycle : %d", vm->cyclen);
-	wmove(win, 5, 3);
+	wmove(win, 5, MEM_WIDTH + 4);
 	wprintw(win, "CYCLE_TO_DIE : %d", vm->cycles_to_die);
-	wmove(win, 7, 3);
+	wmove(win, 7, MEM_WIDTH + 4);
+	wprintw(win, "Delay : %d", (int)(g_delay));
 }
 
 void cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
@@ -53,19 +52,28 @@ void cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
 		y = i / 64;
 		x = 2*i % 128 + 1;
 		to_print = arena[i];
-		mvwaddch(get_mem_window(), y + 1, x + 1, '0' + to_print / 16 | A_STANDOUT); // | COLOR_PAIR(3)
-		mvwaddch(get_mem_window(), y + 1, x, '0' + to_print % 16 | A_STANDOUT); // | COLOR_PAIR(3)
+		mvwaddch(get_window(), y + 1, x + 1, '0' + to_print / 16 | A_STANDOUT); // | COLOR_PAIR(3)
+		mvwaddch(get_window(), y + 1, x, '0' + to_print % 16 | A_STANDOUT); // | COLOR_PAIR(3)
 		prcs = prcs->next;
 	}
 }
 
+
 void cw_vs_print_frame(t_vm* vm, t_prcs *first_prcs)
 {
+	long int input;
+
 	cw_vs_clear_windows();
 	cw_vs_print_memory(vm->field);
 	cw_vs_print_prcs(first_prcs, vm->field);
 	cw_vs_print_info(vm);
-
 	cw_vs_refresh_windows();
-	cw_vs_refresh_windows();
+	input = getch();
+	if (input == KEY_UP && g_delay > 3)
+		g_delay /= 1.1;
+	else if (input == KEY_DOWN && g_delay < 100000)
+		g_delay *= 1.1;
+	if (g_delay == 0)
+		g_delay = 100000;
+	usleep((int)(g_delay));
 }

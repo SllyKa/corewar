@@ -23,6 +23,24 @@ void cw_vs_print_memory(unsigned char *arena)
 	}
 }
 
+void	cw_vs_print_players(t_vm *vm)
+{
+	t_plr_ardata *now_player;
+	int		y;
+	WINDOW	*win;
+
+	win = get_window();
+	now_player = vm->plrdata;
+	y = 11;
+	while(now_player)
+	{
+		wmove(win, y++, MEM_WIDTH + 4);
+		wprintw(win, "player %s", now_player->name);
+		wmove(win, y++, MEM_WIDTH + 8);
+		wprintw(win, "live : %d", now_player->liven);
+		y++;
+	}
+}
 
 
 double g_delay;
@@ -32,11 +50,14 @@ void cw_vs_print_info(t_vm* vm)
 
 	win = get_window();
 	wmove(win, 3, MEM_WIDTH + 4);
-	wprintw(win, "Cycle : %d", vm->cyclen);
-	wmove(win, 5, MEM_WIDTH + 4);
-	wprintw(win, "CYCLE_TO_DIE : %d", vm->cycles_to_die);
-	wmove(win, 7, MEM_WIDTH + 4);
 	wprintw(win, "Delay : %d", (int)(g_delay));
+	wmove(win, 5, MEM_WIDTH + 4);
+	wprintw(win, "Cycle : %d", vm->cyclen);
+	wmove(win, 7, MEM_WIDTH + 4);
+	wprintw(win, "CYCLE_TO_DIE : %d", vm->cycles_to_die);
+	wmove(win, 9, MEM_WIDTH + 4);
+	wprintw(win, "LIVEN : %d", vm->liven);
+	cw_vs_print_players(vm);
 }
 
 void cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
@@ -59,13 +80,13 @@ void cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
 }
 
 
-void cw_vs_print_frame(t_vm* vm, t_prcs *first_prcs)
+void cw_vs_print_frame(t_vm* vm)
 {
 	long int input;
 
 	cw_vs_clear_windows();
 	cw_vs_print_memory(vm->field);
-	cw_vs_print_prcs(first_prcs, vm->field);
+	cw_vs_print_prcs(vm->prcs, vm->field);
 	cw_vs_print_info(vm);
 	cw_vs_refresh_windows();
 	input = getch();

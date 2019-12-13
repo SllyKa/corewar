@@ -14,7 +14,6 @@ void make_colors()
 
 void init_visual()
 {
-	printf("init_visual\n");
 	initscr();
 	keypad(stdscr, true);
 	nodelay(stdscr, true);
@@ -24,10 +23,16 @@ void init_visual()
 	timeout(5);
 	use_default_colors();
 	start_color();
-	printf("colors: %d\n", COLORS);
 	init_window();
 	make_colors();
 	// wattron(get_window(), COLOR_PAIR(1) );
+}
+
+
+void destroy_visual()
+{
+	delwin(get_window());
+	endwin();
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 15:30:00 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:56:33 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@ t_prcs			*init_process_cpy(t_prcs *src)
 	return (new_prcs);
 }
 
-t_vm			*init_arena(size_t players, unsigned char *field)
+t_vm			*init_arena(t_plr_ardata *plrdata, size_t players,
+unsigned char *field)
 {
 	t_vm	*new_arena;
 
 	new_arena = (t_vm*)malloc(sizeof(t_vm));
+	new_arena->plrdata = plrdata;
 	new_arena->checkn = 0;
 	new_arena->cyclen = 0;
 	new_arena->cycles_to_die = CYCLE_TO_DIE;

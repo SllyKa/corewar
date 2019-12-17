@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 17:32:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 19:38:22 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/06 17:56:18 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,26 @@ size_t			vm_add_address(size_t pc, int offset)
 
 int				vm_btoi(unsigned char *bytes, size_t size)
 {
-	int				up;
-	int				num;
+	char			in[4];
+	size_t			up;
 	size_t			i;
 
 	i = 0;
+	while (i < 4)
+	{
+		in[i] = 0;
+		i++;
+	}
+	i = 0;
 	up = 4;
-	if (size < up)
+	if (size < 4)
 		up = size;
 	while (i < up)
 	{
-		num = bytes[i] 
+		in[i] =  bytes[size - 1 - i];
 		i++;
 	}
+	return (*((int*)in));
 }
 
 int				chk_opcode(unsigned char opcode)

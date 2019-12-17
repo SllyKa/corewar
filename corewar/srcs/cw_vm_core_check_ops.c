@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 15:48:34 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/06 21:48:37 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 			if (g_op_tab[prc->curop - 1].opcode == 1)
 			{
 				live(vm, prc);
-				prc->pc = vm_add_address(prc->pc, pass_bytes(typebyte));
+				prc->pc = vm_add_address(prc->pc, DIR_SIZE + 1);
 			}
 			//exec_op();
 		}

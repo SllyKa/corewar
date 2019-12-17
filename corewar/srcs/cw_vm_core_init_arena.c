@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:34:30 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/11/26 18:17:58 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:58:28 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ t_vm					*cw_arena_init(t_plr_ardata *chmp_init)
 
 	players = core_player_cntr(chmp_init);
 	arena_f = init_field(chmp_init, players);
-	vm = init_arena(players, arena_f);
+	vm = init_arena(chmp_init, players, arena_f);
 	return (vm);
 }

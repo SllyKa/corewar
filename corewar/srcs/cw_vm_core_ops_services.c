@@ -6,13 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 14:59:40 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/06 18:59:49 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/17 22:07:57 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	plrs_lives_upd(t_plr_ardata *plrdata, int uid)
+static void		plrs_lives_upd(t_plr_ardata *plrdata, int uid)
 {
 	t_plr_ardata	*pl;
 
@@ -25,9 +25,24 @@ static void	plrs_lives_upd(t_plr_ardata *plrdata, int uid)
 	}
 }
 
-void		cw_vm_core_upd_live(t_vm *vm, int uid)
+void			cw_vm_core_upd_live(t_vm *vm, int uid)
 {
 	vm->lastlive = vm->cyclen;
 	(vm->liven)++;
 	plrs_lives_upd(vm->plrdata, uid);
+}
+
+unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn)
+{
+	unsigned char	var;
+
+	var = 0;
+	if (argn == 1)
+		var = (typebyte >> 6) & 3;
+	else if (argn == 2)
+		var = (typebyte >> 4) & 3;
+	else if (argn == 3)
+		var = (typebyte >> 2) & 3;
+	var = typebyte_to_arg_type(var);
+	return (var);
 }

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:23:20 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/06 19:01:00 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/17 23:55:08 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int		main(int argc, char **argv)
 	plrs = NULL;
 	plrs = add_plrdata(plrs, 1, "12345aghnbtuyop\0qwe\xff", 20);
 	plrs = add_plrdata(plrs, 2, "!@#$sdgfg^&*", 12);
-	plrs = add_plrdata(plrs, 3, "dsgdsgbdsbdsbdsbdsghdshwerpisdfkpew,sf", 38);
-	plrs = add_plrdata(plrs, 4, "dskogmnwovmekwmvodsmvo;mdonvsdxc&*(", 35);
-	plrs = add_plrdata(plrs, 5, "\x01\xff\xff\xff\xfbllll", 9);
+	plrs = add_plrdata(plrs, 3, "\x02\xD0\x00\x01\x0egbdsbdsbdsbdsghdshwerpisdfkpew,sfa", 41);
+	plrs = add_plrdata(plrs, 4, "\x02\x90\x00\x00\x00\xff\x0fwovmekwmvodsmvo;mdonvsdxc&*(", 35);
+	plrs = add_plrdata(plrs, 5, "\x01\xff\xff\xff\xfblllll", 10);
 	arena = cw_arena_init(plrs);
 	cw_vm_memdump(arena);
 	arena->prcs = cw_prcs_init(arena);

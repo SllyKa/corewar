@@ -6,26 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/06 21:48:37 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/17 23:53:59 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 extern t_op g_op_tab[17];
-
-static unsigned char	typebyte_to_arg_type(unsigned char arg)
-{
-	if (arg == 0)
-		return arg;
-	if (arg == REG_CODE)
-		arg = T_REG;
-	else if (arg == DIR_CODE)
-		arg = T_DIR;
-	else if (arg == IND_CODE)
-		arg = T_IND;
-	return (arg);
-}
 
 static int				chk_types_byte(unsigned char opcode, unsigned char typebyte)
 {
@@ -57,7 +44,8 @@ static size_t			typebyte_to_byten(unsigned char arg)
 	if (arg == 0)
 		return (passn);
 	if (arg == REG_CODE)
-		passn += REG_SIZE;
+		passn += CODE_REG_SIZE;
+	// have to add 2 or 4 choose further	
 	else if (arg == DIR_CODE)
 		passn += DIR_SIZE;
 	else if (arg == IND_CODE)
@@ -94,16 +82,29 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 	{
 		if (g_op_tab[prc->curop - 1].argnum != 1 &&
 		chk_types_byte(prc->curop, typebyte) < 0)
-			prc->pc = vm_add_address(prc->pc, pass_bytes(typebyte));
+			prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
 		else
 		{
-			//mb lift it up ?
-			if (g_op_tab[prc->curop - 1].opcode == 1)
+			// need special thing to aff and forbid for onevalues
+			if (chk_reg_valid(vm, prc, prc->curop, typebyte) < 0)
+				prc->pc = ((g_op_tab[prc->curop - 1].argnum == 1) ?
+				vm_add_address(prc->pc, 1 + CODE_REG_SIZE) :
+				vm_add_address(prc->pc, 1 + pass_bytes(typebyte)));
+			else
 			{
-				live(vm, prc);
-				prc->pc = vm_add_address(prc->pc, DIR_SIZE + 1);
+				//mb lift it up ?
+				if (g_op_tab[prc->curop - 1].opcode == 1)
+				{
+					live(vm, prc);
+					prc->pc = vm_add_address(prc->pc, DIR_SIZE + 1);
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 2)
+				{
+					ld(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				//exec_op();
 			}
-			//exec_op();
 		}
 	}
 }

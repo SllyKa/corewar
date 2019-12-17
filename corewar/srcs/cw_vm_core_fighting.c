@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 15:34:51 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/17 20:18:15 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	read_operation(unsigned char *field, t_prcs *prc)
 		prc->waitcycle = g_op_tab[prc->curop - 1].wait;
 	else
 		prc->waitcycle = 0;
+	// just testing
 	ft_printf("uid: %d\n", r_geti(prc->regs[0]));
 	ft_printf("cur_pos: %i\n", prc->pc);
 	ft_printf("code: %.2x\n", prc->curop);

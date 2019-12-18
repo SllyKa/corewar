@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 22:07:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/17 22:28:50 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/18 17:09:53 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int				ops_read_treg(unsigned char *field, size_t addr)
 	return (res);
 }
 
-size_t			ops_read_tind(unsigned char *field, size_t addr)
+int			ops_read_tind(unsigned char *field, size_t addr)
 {
 	unsigned char	*tind;
-	size_t			resaddr;
+	int				resoffst;
 
 	tind = vm_readb(field, addr, IND_SIZE);
-	resaddr = vm_btoi(tind, IND_SIZE);
+	resoffst = vm_btoi(tind, IND_SIZE);
 	free_vm_readb(tind);
-	resaddr = resaddr % IDX_MOD;
-	return (resaddr);
+	resoffst = resoffst % IDX_MOD;
+	return (resoffst);
 }

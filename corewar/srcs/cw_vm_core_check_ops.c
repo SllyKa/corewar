@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/17 23:53:59 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/18 20:52:32 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,21 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 				if (g_op_tab[prc->curop - 1].opcode == 2)
 				{
 					ld(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 3)
+				{
+					st(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 4)
+				{
+					add(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 5)
+				{
+					sub(vm, prc);
 					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
 				}
 				//exec_op();

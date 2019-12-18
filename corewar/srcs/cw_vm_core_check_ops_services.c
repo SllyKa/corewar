@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 12:37:23 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/17 23:52:40 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/18 19:48:29 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,18 @@ int				chk_reg_valid(t_vm *vm, t_prcs *prc, unsigned char opcode,
 {
 	int				i;
 	int				tonext;
-	unsigned char	*temp;
 	int				reg_val;
 
 	i = 0;
 	tonext = ((g_op_tab[opcode - 1].argnum == 1) ? 1 : 2);
 	while (i < 3)
 	{
-		if ((T_REG & g_op_tab[opcode - 1].argtype[i]) == T_REG)
+		if ((T_REG & vm_core_ops_argn_type(typebyte, i + 1)) == T_REG)
 		{
-			temp = vm_readb(vm->field, vm_add_address(prc->pc, tonext), CODE_REG_SIZE);
-			reg_val = vm_btoi(temp, CODE_REG_SIZE);
-			if (reg_val >= REG_NUMBER)
+			reg_val = ops_read_treg(vm->field, vm_add_address(prc->pc, tonext));
+			if ((reg_val >= REG_NUMBER) || (reg_val <= 0))
 				return (-1);
 			tonext += CODE_REG_SIZE;
-			temp = free_vm_readb(temp);
 		}
 		else
 			tonext += arg_type_to_size(opcode, vm_core_ops_argn_type(typebyte, i + 1));

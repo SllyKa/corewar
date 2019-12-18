@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/17 23:22:06 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/18 22:06:52 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 
 void			live(t_vm *vm, t_prcs *prcs);
 void			ld(t_vm *vm, t_prcs *prcs);
+void			st(t_vm *vm, t_prcs *prcs);
+void			add(t_vm *vm, t_prcs *prcs);
+void			sub(t_vm *vm, t_prcs *prcs);
 
 
 char			**init_regs(int r1);
@@ -41,6 +44,7 @@ unsigned char	typebyte_to_arg_type(unsigned char arg);
 char			*r_mov(char *reg, void *data, size_t size);
 unsigned char	*r_get(char *reg);
 void			*free_rget(unsigned char *val);
+void			reverse_reg(unsigned char *reg);
 int				r_geti(char *reg);
 
 unsigned char 	deref_pntr(unsigned char *field, size_t pntr);
@@ -52,9 +56,13 @@ unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
 
 int				ops_read_tdir(unsigned char *field, size_t addr, size_t size);
 int				ops_read_treg(unsigned char *field, size_t addr);
-size_t			ops_read_tind(unsigned char *field, size_t addr);
+int				ops_read_tind(unsigned char *field, size_t addr);
+unsigned char	*vm_core_add(unsigned char *val1, unsigned char *val2, 
+int size1, int *size2);
 
 unsigned char	*vm_readb(unsigned char *field, size_t pos, size_t size);
+void			vm_writeb(unsigned char *field, size_t adrs, void *data,
+size_t size);
 void			*free_vm_readb(unsigned char *bt);
 
 t_plr_ardata	*add_plrdata(t_plr_ardata *head, int uid,

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:36:06 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 18:44:31 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/18 20:35:23 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ unsigned char	*r_get(char *reg)
 {
 	unsigned char	*res;
 
-	res = ft_memalloc(REG_SIZE + 1);
+	if (REG_SIZE < 4)
+		res = ft_memalloc(4 + 1);
+	else
+		res = ft_memalloc(REG_SIZE + 1);
 	res = ft_memcpy(res, reg, REG_SIZE);
 	return (res);
 }
@@ -46,11 +49,28 @@ void	*free_rget(unsigned char *val)
 	return (val);
 }
 
+void	reverse_reg(unsigned char *reg)
+{
+	size_t	i;
+	char	tmp;
+
+	i = 0;
+	while (i < REG_SIZE / 2)
+	{
+		tmp = reg[i];
+		reg[i] = reg[REG_SIZE - 1 - i];
+		reg[REG_SIZE - 1 - i] = tmp;
+		i++;
+	}
+}
+
 int		r_geti(char *reg)
 {
-	// do not use REG_SIZE variable (!)
-	int num;
+	int 			num;
+	unsigned char	*r;
 
-	num = *(int *)reg;
+	r = r_get(reg);
+	num = *(int *)r;
+	r = free_rget(r);
 	return (num);
 }

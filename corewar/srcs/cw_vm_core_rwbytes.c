@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 12:50:38 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/18 19:27:38 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/19 21:21:45 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ unsigned char	*vm_readb(unsigned char *field, size_t adrs, size_t size)
 	return (val);
 }
 
-void			vm_writeb(unsigned char *field, size_t adrs, void *data, size_t size)
+void			vm_writeb(unsigned char *field, size_t adrs,
+void *data, size_t size)
 {
 	size_t		delsize;
 
@@ -42,6 +43,18 @@ void			vm_writeb(unsigned char *field, size_t adrs, void *data, size_t size)
 		ft_memcpy(field, data + delsize, delsize);
 	}
 }
+
+void			vm_writebreg(unsigned char *field, size_t adrs,
+void *reg, size_t size)
+{
+	unsigned char	*bytes;
+
+	bytes = r_get(reg);
+	reverse_reg(bytes);
+	vm_writeb(field, adrs, bytes, size);
+	free_rget(bytes);
+}
+
 
 void			*free_vm_readb(unsigned char *bt)
 {

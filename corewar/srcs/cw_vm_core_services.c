@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 17:32:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/18 17:04:22 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/19 22:30:04 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ int				chk_opcode(unsigned char opcode)
 	if (opcode < 1 || opcode > 16)
 		return (-1);
 	return (1);
+}
+
+t_prcs			*add_prc(t_prcs *head, t_prcs *new)
+{
+	if (!new)
+		return (NULL);
+	new->next = head;
+	head = new;
+	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/06 18:56:33 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/19 22:40:01 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,18 @@ t_prcs			*init_process_start(int r1, size_t pc)
 	return (new_prcs);
 }
 
-t_prcs			*init_process_cpy(t_prcs *src)
+t_prcs			*init_process_cpy(t_prcs *src, size_t pc)
 {
 	t_prcs		*new_prcs;
 
 	new_prcs = (t_prcs*)malloc(sizeof(t_prcs));
 	new_prcs->carry = src->carry;
-	new_prcs->pc = src->pc;
-	new_prcs->curop = src->curop;
+	new_prcs->pc = pc;
+	new_prcs->curop = 0;
 	new_prcs->livecycle = src->livecycle;
-	new_prcs->waitcycle = src->waitcycle;
+	new_prcs->waitcycle = 0;
 	new_prcs->nextop = 0;
-	new_prcs->regs = src->regs;
+	new_prcs->regs = vm_cpy_regs(src->regs);
 	new_prcs->next = NULL;
 	return (new_prcs);
 }

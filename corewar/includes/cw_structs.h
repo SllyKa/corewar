@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/04 15:31:51 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 01:31:25 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_op
 	unsigned char	opcode;
 	int				wait;
 	char			*descript;
-	char			usecarry;
+	char			istypeb;
 	char			isadress;
 }				t_op;
 

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_core_init_prcs.c                             :+:      :+:    :+:   */
+/*   cw_vm_core_services_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 20:47:46 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 22:31:49 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
+/*   Updated: 2019/12/19 22:36:21 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_prcs		*cw_prcs_init(t_vm *vm)
+char		**vm_cpy_regs(char **regs)
 {
-	t_prcs			*prcs;
-	t_prcs			*new_pr;
-	t_plr_ardata	*pld;
-	size_t			field_pos;
+	char		**new_regs;
+	int			i;
 
-	prcs = NULL;
-	pld = vm->plrdata;
-	field_pos = 0;
-	while(pld)
+	new_regs = (char**)malloc(sizeof(char*) * (REG_NUMBER + 1));
+	i = 0;
+	while (i < REG_NUMBER)
 	{
-		new_pr = init_process_start(pld->uid, field_pos);
-		prcs = add_prc(prcs, new_pr);
-		pld = pld->next;
-		field_pos = field_pos + MEM_SIZE / vm->players;
- 	}
-	return (prcs);
+		new_regs[i] = (char*)ft_memalloc(sizeof(char) * (REG_SIZE + 1));
+		new_regs[i] = ft_memcpy(new_regs[i], regs[i], REG_SIZE);
+		i++;
+	}
+	new_regs[i] = NULL;
+	return (new_regs);
 }

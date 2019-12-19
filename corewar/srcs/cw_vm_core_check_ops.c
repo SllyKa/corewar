@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/18 20:52:32 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 01:51:09 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,15 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 		prc->pc = vm_add_address(prc->pc, 1);
 	else
 	{
-		if (g_op_tab[prc->curop - 1].argnum != 1 &&
+		if (g_op_tab[prc->curop - 1].istypeb == 1 &&
 		chk_types_byte(prc->curop, typebyte) < 0)
 			prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
 		else
 		{
 			// need special thing to aff and forbid for onevalues
-			if (chk_reg_valid(vm, prc, prc->curop, typebyte) < 0)
-				prc->pc = ((g_op_tab[prc->curop - 1].argnum == 1) ?
-				vm_add_address(prc->pc, 1 + CODE_REG_SIZE) :
-				vm_add_address(prc->pc, 1 + pass_bytes(typebyte)));
+			if (g_op_tab[prc->curop - 1].istypeb == 1 &&
+			chk_reg_valid(vm, prc, prc->curop, typebyte) < 0)
+				prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
 			else
 			{
 				//mb lift it up ?
@@ -116,6 +115,62 @@ void					check_opsign(t_vm *vm, t_prcs *prc)
 				if (g_op_tab[prc->curop - 1].opcode == 5)
 				{
 					sub(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 6)
+				{
+					and(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 7)
+				{
+					or(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 8)
+				{
+					xor(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 9)
+				{
+					zjmp(vm, prc);
+					if (!prc->carry)
+						prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 10)
+				{
+					ldi(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 11)
+				{
+					sti(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 12)
+				{
+					fork(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 13)
+				{
+					lld(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 14)
+				{
+					lldi(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 15)
+				{
+					lfork(vm, prc);
+					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				}
+				if (g_op_tab[prc->curop - 1].opcode == 16)
+				{
+					aff(vm, prc);
 					prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
 				}
 				//exec_op();

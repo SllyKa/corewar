@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 04:36:26 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 19:08:53 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libftprintf.h"
 # include "cw_structs.h"
 
-#define	CODE_REG_SIZE	1
+# define	CODE_REG_SIZE	1
 
 void			live(t_vm *vm, t_prcs *prcs);
 void			ld(t_vm *vm, t_prcs *prcs);
@@ -94,6 +94,5 @@ void			cw_vm_memdump(t_vm *arena);
 
 t_prcs			*cw_free_tprcs(t_prcs *prc);
 char			**cw_free_regs(char **regs);
-
 
 #endif

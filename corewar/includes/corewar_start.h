@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   corewar_start.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 06:10:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 21:50:37 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/12/20 19:08:03 by gbrandon          #+#    #+#             */
+/*   Updated: 2019/12/20 21:49:59 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	g_flags = 0;
-int		g_verbf = 0;
-int		g_memdmp = 0;
+#ifndef COREWAR_START_H
+# define COREWAR_START_H
 
-#include "corewar.h"
-#include "corewar_start.h"
+# include <stdlib.h>
+# include "op.h"
+# include "libftprintf.h"
+# include "cw_structs.h"
 
-int		main(int argc, char **argv)
-{
-	cw_vm_start(argc, argv);
-	return (0);
-}
+t_plr_ardata	*cw_vm_start(int argc, char **argv);
+int				cw_vm_start_read_option(size_t argc, char **argv, size_t i,
+int *num);
+void			cw_vm_errormsg(char *msg);
+
+#endif

@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   cw_vm_start_services.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/20 06:10:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 21:50:37 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/12/20 21:37:18 by gbrandon          #+#    #+#             */
+/*   Updated: 2019/12/20 22:45:30 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	g_flags = 0;
-int		g_verbf = 0;
-int		g_memdmp = 0;
-
-#include "corewar.h"
 #include "corewar_start.h"
+#include "avlt.h"
 
-int		main(int argc, char **argv)
+void		cw_vm_errormsg(char *msg)
 {
-	cw_vm_start(argc, argv);
-	return (0);
+	if (!msg)
+		ft_printf("\n%{red}Error:%{eoc} ");
+	else
+		ft_printf("\n%{red}Error:%{eoc}\t%s", msg);
+}
+
+void		check_and_passnum(int num)
+{
+	//will use avl)
 }

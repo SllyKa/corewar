@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 14:59:40 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 20:43:09 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 05:25:24 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		plrs_lives_upd(t_plr_ardata *plrdata, int uid)
 
 void			cw_vm_core_upd_live(t_vm *vm, int uid)
 {
-	vm->lastlive = vm->cyclen;
+	vm->lastlive = uid;
 	(vm->liven)++;
 	plrs_lives_upd(vm->plrdata, uid);
 }

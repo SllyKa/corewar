@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 01:24:28 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 04:36:26 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ unsigned char *field);
 t_vm			*cw_arena_init(t_plr_ardata *chmp_init);
 t_prcs			*cw_prcs_init(t_vm *vm);
 int				cw_fight(t_vm *vm);
-void			check_opsign(t_vm *vm, t_prcs *prc);
+int				check_opsign(t_vm *vm, t_prcs *prc);
+size_t			pass_bytes(unsigned char typebyte);
 int				chk_reg_valid(t_vm *vm, t_prcs *prcs, unsigned char opcode,
 unsigned char typebyte);
 unsigned char	typebyte_to_arg_type(unsigned char arg);
@@ -65,6 +66,7 @@ int				vm_btoi(unsigned char *bytes, size_t size);
 int				chk_opcode(unsigned char opcode);
 t_prcs			*add_prc(t_prcs *head, t_prcs *new);
 char			**vm_cpy_regs(char **regs);
+t_prcs			*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev);
 void			cw_vm_core_upd_live(t_vm *vm, int uid);
 unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
 int				arrgs_chse(t_vm *vm, t_prcs *prcs,
@@ -89,5 +91,9 @@ t_plr_ardata	*add_plrdata(t_plr_ardata *head, int uid,
 					char *data, size_t data_size);
 
 void			cw_vm_memdump(t_vm *arena);
+
+t_prcs			*cw_free_tprcs(t_prcs *prc);
+char			**cw_free_regs(char **regs);
+
 
 #endif

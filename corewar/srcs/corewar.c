@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:23:20 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 01:51:59 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 05:18:37 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int		main(int argc, char **argv)
 	plrs = add_plrdata(plrs, 1, "\x02\x90\x7f\xff\xff\xff\x04\x02\x90\xff\xff\xff\xfe\x05\x05\x54\x04\x05\x02i45aghnbtuyop\0qwe\xff", 39);
 	plrs = add_plrdata(plrs, 2, "\x02\x90\x00\x00\x00\x00\x02\x03\x70\x02\x00\x00!@#$sdgfg^&*", 26);
 	plrs = add_plrdata(plrs, 3, "\x02\xD0\xff\xff\x0B\x02\xD0\x00\x05\x0e\x00\x00\x00\xff\x0B\x58\x0B\x01\xff\xfezbsbdsbdsghdshwerpisdfkpew,sfa", 50);
-	plrs = add_plrdata(plrs, 4, "\x02\x90\x00\x00\x00\x00\x0f\x09\x00\x03\x0C\xff\xf0wovmekwmvodsmvo;mdonvsdxc&*(", 42);
-	plrs = add_plrdata(plrs, 5, "\x01\xff\xff\xff\xfblllll", 12);
+	plrs = add_plrdata(plrs, 4, "\x02\x90\x00\x00\x00\x00\x0f\x09\x00\x03\x0F\xff\xf0wovmekwmvodsmvo;mdonvsdxc&*(", 42);
+	plrs = add_plrdata(plrs, 5, "\x01\xff\xff\xff\xfb\x02\x90\x00\x00\x00\x00\x0f\x09\xff\xf4lllll", 21);
 	//		--(and or xor)reg reg reg
 	//plrs = add_plrdata(plrs, 6, "\x02\xD0\xff\xfe\x05\x02\x90\x00\x0f\x10\x11\x0A\x08\x54\x05\x0A\x0fzzzzz", 24);
 	//		--(and or xor) ind dir reg

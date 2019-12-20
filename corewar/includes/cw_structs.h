@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 01:31:25 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 02:08:26 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct	s_op
 	char			*descript;
 	char			istypeb;
 	char			isadress;
+	void			*f_ptr;
 }				t_op;
 
 #endif

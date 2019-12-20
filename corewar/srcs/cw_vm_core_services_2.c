@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 22:36:21 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/20 04:35:42 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,20 @@ char		**vm_cpy_regs(char **regs)
 	}
 	new_regs[i] = NULL;
 	return (new_regs);
+}
+
+t_prcs		*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev)
+{
+	t_prcs		*temp;
+
+	if (!dl)
+		return (NULL);
+	temp = dl;
+	dl = dl->next;
+	if (prev == NULL)
+		vm->prcs = dl;
+	else
+		prev->next = dl;
+	cw_free_tprcs(temp);
+	return (dl);
 }

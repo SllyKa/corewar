@@ -65,6 +65,7 @@ void			vm_writeb(unsigned char *field, size_t adrs, void *data,
 size_t size);
 void			*free_vm_readb(unsigned char *bt);
 
+void			error_exit(char *str);
 void			read_champ_name(t_plr_ardata *plr, int fd);
 void			read_code_comment(int fd);
 void			read_zero_bytes(int fd);

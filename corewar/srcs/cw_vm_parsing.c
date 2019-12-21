@@ -37,7 +37,7 @@ void				check_magick_number(int fd)
 	long	magic;
 
 	if (read(fd, buff, 4) != 4)
-		error_exit("bad magic num!\n");
+		error_exit("bad file!\n");
 	buff[4] = 0;
 	i = 3;
 	magic = COREWAR_EXEC_MAGIC;
@@ -72,7 +72,7 @@ void				parse_champ(t_plr_ardata **plr, int champ_id, int fd)
 	t_plr_ardata *new_plr;
 
 	check_magick_number(fd);
-	new_plr = create_plrardata();
+	new_plr = create_plrdata();
 	new_plr->uid = champ_id;
 	read_champ_name(new_plr, fd);
 	read_zero_bytes(fd);

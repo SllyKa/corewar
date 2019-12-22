@@ -86,8 +86,17 @@ void			vm_writebreg(unsigned char *field, size_t adrs,
 void *reg, size_t size);
 void			*free_vm_readb(unsigned char *bt);
 
-t_plr_ardata	*add_plrdata(t_plr_ardata *head, int uid,
-					char *data, size_t data_size);
+void			error_exit(char *str);
+void			read_champ_name(t_plr_ardata *plr, int fd);
+void			read_code_comment(int fd);
+void			read_zero_bytes(int fd);
+void			read_code_size(t_plr_ardata *plr, int fd);
+void			read_champ_code(t_plr_ardata *plr, int fd);
+
+void			parse_champ(t_plr_ardata **plr, int champ_id, int fd);
+
+
+
 
 void			cw_vm_memdump(t_vm *arena);
 void			cw_vm_flags_verb_live(t_plr_ardata *plrdata);

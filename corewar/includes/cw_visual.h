@@ -7,6 +7,10 @@ WINDOW	*get_window();
 
 WINDOW	**window_singleton(void);
 
+#define MEM_HEIGHT 64
+# define MEM_WIDTH  128
+# define INFO_HEIGHT 40
+# define INFO_WIDTH 60
 
 void init_visual();
 void cw_vs_print_frame(t_vm* vm);

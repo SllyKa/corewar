@@ -96,17 +96,12 @@ int			cw_fight(t_vm *vm)
 		i = 0;
 		while (i < vm->cycles_to_die)
 		{
-			//cw_vs_print_frame(vm);
 			prcs_head = vm->prcs;
 			prcs_cycle(vm, prcs_head);
 			i++;
 			(vm->cyclen)++;
 			cw_vm_flags_verb_cycle(vm);
-			if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen + 1)))
-			{
-				cw_vm_memdump(vm);
-				return (0);
-			}
+			cw_vs_print_frame(vm);
 		}
 		cw_vm_check(vm);
 	}

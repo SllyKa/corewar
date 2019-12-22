@@ -28,7 +28,9 @@ int		main(int argc, char **argv)
 	vm = cw_arena_init(plrardata);
 	cw_vm_memdump(vm);
 	vm->prcs = cw_prcs_init(vm);
-	//init_visual();
+	init_visual();
+	cw_vs_print_frame(vm);
+	pause_game();
 	cw_fight(vm);
 	cw_vm_won_player(vm);
 	cw_free_vm(vm);

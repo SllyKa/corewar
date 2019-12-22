@@ -153,6 +153,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(long long n);
+char				ft_itoa_char(long long n);
 char				*ft_strrev_bin(char **str);
 char				*ft_base_convert(char *base_str, unsigned long long nbr);
 unsigned char		*ft_strrev_num(unsigned char *s, int len);

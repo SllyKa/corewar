@@ -35,8 +35,15 @@ void	reinit_visual(void)
 
 void	pause_game(void)
 {
+	char	input;
+
 	wmove(get_window(), 1, MEM_WIDTH + 4);
 	wprintw(get_window(), "PRESS ANY BUTTON TO START!");
 	cw_vs_refresh_windows();
-	while (getch() == ERR) ;
+	while ((input  = getch()) == ERR) ;
+	if (input == 27 || input == 'q')
+	{
+		exit(0);
+		destroy_visual();
+	}
 }

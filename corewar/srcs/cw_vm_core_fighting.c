@@ -102,6 +102,11 @@ int			cw_fight(t_vm *vm)
 			(vm->cyclen)++;
 			cw_vm_flags_verb_cycle(vm);
 			cw_vs_print_frame(vm);
+			if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen + 1)))
+			{
+				cw_vm_memdump(vm);
+				return (0);
+			}
 		}
 		cw_vm_check(vm);
 	}

@@ -12,6 +12,9 @@ WINDOW	**window_singleton(void);
 # define INFO_HEIGHT 40
 # define INFO_WIDTH 60
 
+int		g_is_debug;
+
+
 void init_visual();
 void cw_vs_print_frame(t_vm* vm);
 

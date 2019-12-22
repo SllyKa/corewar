@@ -36,7 +36,7 @@ void	cw_vs_print_players(t_vm *vm)
 	int				y;
 
 	now_player = vm->plrdata;
-	y = 13;
+	y = 15;
 	while (now_player)
 	{
 		wmove(get_window(), y++, MEM_WIDTH + 4);
@@ -49,6 +49,7 @@ void	cw_vs_print_players(t_vm *vm)
 }
 
 double	g_delay;
+
 
 void	cw_vs_print_info(t_vm *vm)
 {
@@ -64,6 +65,8 @@ void	cw_vs_print_info(t_vm *vm)
 	wprintw(get_window(), "LIVEN : %d", vm->liven);
 	wmove(get_window(), 11, MEM_WIDTH + 4);
 	wprintw(get_window(), "PROCESS : %d", get_process_quan(vm));
+	wmove(get_window(), 13, MEM_WIDTH + 4);
+	wprintw(get_window(), "IS_DEBUG : %d", g_is_debug);
 	cw_vs_print_players(vm);
 }
 
@@ -98,13 +101,12 @@ void	cw_vs_print_frame(t_vm *vm)
 	cw_vs_print_info(vm);
 	cw_vs_refresh_windows();
 	input = getch();
-	if (input == ' ')
+	if (input == ' ' || g_is_debug)
 		pause_game();
 	if (input == 27 || input == 'q')
-	{
 		exit(0);
-		destroy_visual();
-	}
+	if (input == 'd')
+		g_is_debug = !g_is_debug;
 	if (input == KEY_UP && g_delay > 3)
 		g_delay /= 1.1;
 	else if (input == KEY_DOWN && g_delay < 100000)

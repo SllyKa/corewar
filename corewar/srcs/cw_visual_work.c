@@ -38,7 +38,7 @@ void	pause_game(void)
 	char	input;
 
 	wmove(get_window(), 1, MEM_WIDTH + 4);
-	wprintw(get_window(), "PRESS ANY BUTTON TO START!");
+	wprintw(get_window(), "PAUSE");
 	cw_vs_refresh_windows();
 	while ((input  = getch()) == ERR) ;
 	if (input == 27 || input == 'q')
@@ -46,4 +46,6 @@ void	pause_game(void)
 		exit(0);
 		destroy_visual();
 	}
+	if (input == 'd')
+		g_is_debug = !g_is_debug;
 }

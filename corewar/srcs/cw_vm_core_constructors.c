@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 22:40:01 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 01:31:52 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,18 @@ unsigned char *field)
 	new_arena->field_size = MEM_SIZE;
 	new_arena->prcs = NULL;
 	return (new_arena);
+}
+
+t_args_data		*init_argsdata(size_t i, int fd, int f)
+{
+	t_args_data		*newardata;
+
+	newardata = (t_args_data*)malloc(sizeof(t_args_data));
+	newardata->root = NULL;
+	newardata->plrdata = NULL;
+	newardata->i = i;
+	newardata->f = f;
+	newardata->fd = fd;
+	newardata->num = 0;
+	return (newardata);
 }

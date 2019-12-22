@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 19:08:53 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 04:14:45 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void			xor(t_vm *vm, t_prcs *prcs);
 void			zjmp(t_vm *vm, t_prcs *prcs);
 void			ldi(t_vm *vm, t_prcs *prcs);
 void			sti(t_vm *vm, t_prcs *prcs);
-void			fork(t_vm *vm, t_prcs *prcs);
+void			vm_fork(t_vm *vm, t_prcs *prcs);
 void			lld(t_vm *vm, t_prcs *prcs);
 void			lldi(t_vm *vm, t_prcs *prcs);
-void			lfork(t_vm *vm, t_prcs *prcs);
+void			vm_lfork(t_vm *vm, t_prcs *prcs);
 void			aff(t_vm *vm, t_prcs *prcs);
 
 
@@ -92,6 +92,9 @@ t_plr_ardata	*add_plrdata(t_plr_ardata *head, int uid,
 
 void			cw_vm_memdump(t_vm *arena);
 
+t_vm			*cw_free_vm(t_vm *vm);
+t_plr_ardata	*cw_free_all_tplrardata(t_plr_ardata *plrdata);
+t_prcs			*cw_free_all_tprcs(t_prcs *prcs_head);
 t_prcs			*cw_free_tprcs(t_prcs *prc);
 char			**cw_free_regs(char **regs);
 

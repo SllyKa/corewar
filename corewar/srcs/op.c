@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2019/12/20 02:30:32 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/21 23:59:57 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ t_op    g_op_tab[17] =
 		"load index", 1, 1, ldi},
 	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
 		"store index", 1, 1, sti},
-	{"fork", 1, {T_DIR, 0, 0}, 12, 800, "fork", 0, 1, fork},
+	{"fork", 1, {T_DIR, 0, 0}, 12, 800, "fork", 0, 1, vm_fork},
 	{"lld", 2, {T_DIR | T_IND, T_REG, 0}, 13, 10, "long load", 1, 0, lld},
 	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1, lldi},
-	{"lfork", 1, {T_DIR, 0, 0}, 15, 1000, "long fork", 0, 1, lfork},
+	{"lfork", 1, {T_DIR, 0, 0}, 15, 1000, "long fork", 0, 1, vm_lfork},
 	{"aff", 1, {T_REG, 0, 0}, 16, 2, "aff", 1, 0, aff},
 	{0, 0, {0, 0, 0}, 0, 0, 0, 0, 0, 0}
 };

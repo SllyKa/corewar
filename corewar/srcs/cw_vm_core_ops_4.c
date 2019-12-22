@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 23:54:35 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 05:14:23 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 00:00:45 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		lldi(t_vm *vm, t_prcs *prcs)
 	//ft_printf("REG: %x\n", r_geti(prcs->regs[reg - 1]));
 }
 
-void		lfork(t_vm *vm, t_prcs *prcs)
+void		vm_lfork(t_vm *vm, t_prcs *prcs)
 {
 	int		tdir;
 	t_prcs	*pfork;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 02:08:26 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 01:31:27 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CW_STRUCTS_H
 
 #include "libftprintf.h"
+#include "avlt.h"
 
 typedef struct	s_plr_ardata
 {
@@ -50,6 +51,16 @@ typedef struct	s_vm
 	size_t			field_size;
 	t_prcs			*prcs;
 }				t_vm;
+
+typedef struct	s_args_data
+{
+	t_plr_ardata	*plrdata;
+	t_avlt			*root;
+	size_t			i;
+	int				fd;
+	int				num;
+	int				f;
+}				t_args_data;
 
 typedef struct	s_op
 {

@@ -23,6 +23,7 @@ LIBHEADERDIR=libftprintf/includes
 GNLHEADER=get_next_line.h
 AVLTHEADER=avlt.h
 LIBSHORT= ftprintf
+LIBNCURSES= ncurses
 HEADERDIR= includes
 SRCSDIR= srcs
 HEADER= corewar.h
@@ -46,7 +47,7 @@ debug: $(NAME)
 #
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CC_FLAGS) $(OBJS) -o $@ -I$(HEADERDIR) -I$(LIBHEADERDIR) -L$(LIBDIR) -l$(LIBSHORT)
+	$(CC) $(CC_FLAGS) $(OBJS) -o $@ -I$(HEADERDIR) -I$(LIBHEADERDIR) -L$(LIBDIR) -l$(LIBSHORT) -l$(LIBNCURSES)
 
 $(LIB):
 	cd $(LIBDIR) && $(MAKE) -s

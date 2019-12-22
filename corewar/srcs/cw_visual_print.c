@@ -100,6 +100,11 @@ void	cw_vs_print_frame(t_vm *vm)
 	input = getch();
 	if (input == ' ')
 		pause_game();
+	if (input == 27 || input == 'q')
+	{
+		exit(0);
+		destroy_visual();
+	}
 	if (input == KEY_UP && g_delay > 3)
 		g_delay /= 1.1;
 	else if (input == KEY_DOWN && g_delay < 100000)

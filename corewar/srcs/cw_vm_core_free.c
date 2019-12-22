@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 03:50:21 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 04:14:35 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:08:39 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_plr_ardata	*cw_free_all_tplrardata(t_plr_ardata *plrdata)
 
 	if (!plrdata)
 		return (NULL);
-	while(plrdata)
+	while (plrdata)
 	{
 		temp = plrdata;
 		if (temp->name)
@@ -60,7 +60,7 @@ t_prcs			*cw_free_all_tprcs(t_prcs *prcs_head)
 
 	if (!prcs_head)
 		return (NULL);
-	while(prcs_head)
+	while (prcs_head)
 	{
 		temp = prcs_head;
 		prcs_head = prcs_head->next;
@@ -75,8 +75,8 @@ char			**cw_free_regs(char **regs)
 
 	if (!regs)
 		return (NULL);
-		regs_head = regs;
-	while(*regs_head)
+	regs_head = regs;
+	while (*regs_head)
 	{
 		free(*regs_head);
 		regs_head++;

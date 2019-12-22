@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 22:07:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/18 17:09:53 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:13:47 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ops_read_treg(unsigned char *field, size_t addr)
 	return (res);
 }
 
-int			ops_read_tind(unsigned char *field, size_t addr)
+int				ops_read_tind(unsigned char *field, size_t addr)
 {
 	unsigned char	*tind;
 	int				resoffst;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:11:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 05:18:55 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:24:39 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,22 @@ void		ld(t_vm *vm, t_prcs *prcs)
 	argtype = vm_core_ops_argn_type(typebyte, 1);
 	if (argtype == T_DIR)
 	{
-		tdir = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1 + 1), DIR_SIZE);
+		tdir = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1 + 1),
+		DIR_SIZE);
 		prcs->carry = ((tdir) ? 0 : 1);
-		regn = ops_read_treg(vm->field, vm_add_address(prcs->pc, 1 + 1 + DIR_SIZE));
-		(prcs->regs)[regn - 1] = r_mov((prcs->regs)[regn - 1], &tdir, DIR_SIZE);
+		regn = ops_read_treg(vm->field, vm_add_address(prcs->pc,
+		1 + 1 + DIR_SIZE));
+		prcs->regs[regn - 1] = r_mov(prcs->regs[regn - 1], &tdir, DIR_SIZE);
 	}
 	else if (argtype == T_IND)
 	{
 		tind = ops_read_tind(vm->field, vm_add_address(prcs->pc, 1 + 1));
-		regn = ops_read_treg(vm->field, vm_add_address(prcs->pc, 1 + 1 + IND_SIZE));
-		tdir = ops_read_tdir(vm->field, vm_add_address(prcs->pc, tind), DIR_SIZE);
+		regn = ops_read_treg(vm->field, vm_add_address(prcs->pc,
+		1 + 1 + IND_SIZE));
+		tdir = ops_read_tdir(vm->field, vm_add_address(prcs->pc, tind),
+		DIR_SIZE);
 		prcs->carry = ((tdir) ? 0 : 1);
-		(prcs->regs)[regn - 1] = r_mov((prcs->regs)[regn - 1], &tdir, DIR_SIZE);
+		prcs->regs[regn - 1] = r_mov(prcs->regs[regn - 1], &tdir, DIR_SIZE);
 	}
 }
 

@@ -6,13 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 17:32:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 22:30:04 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:22:10 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-unsigned char 	deref_pntr(unsigned char *field, size_t pntr)
+unsigned char	deref_pntr(unsigned char *field, size_t pntr)
 {
 	return (field[pntr]);
 }
@@ -43,7 +43,7 @@ int				vm_btoi(unsigned char *bytes, size_t size)
 		up = size;
 	while (i < up)
 	{
-		in[i] =  bytes[size - 1 - i];
+		in[i] = bytes[size - 1 - i];
 		i++;
 	}
 	return (*((int*)in));

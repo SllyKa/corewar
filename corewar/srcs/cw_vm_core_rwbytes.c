@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 12:50:38 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/19 21:21:45 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:27:19 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ unsigned char	*vm_readb(unsigned char *field, size_t adrs, size_t size)
 	size_t			delsize;
 
 	val = ft_memalloc(size + 1);
-	if ((adrs + size) <= MEM_SIZE) 
+	if ((adrs + size) <= MEM_SIZE)
 		val = ft_memcpy(val, field + adrs, size);
 	else
 	{
@@ -54,7 +54,6 @@ void *reg, size_t size)
 	vm_writeb(field, adrs, bytes, size);
 	free_rget(bytes);
 }
-
 
 void			*free_vm_readb(unsigned char *bt)
 {

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 06:12:39 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 03:00:48 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 08:38:50 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ ns by ascending order by default)\n");
 xits\n");
 	ft_printf("\t%{blue}-v    N%{eoc}\t: Verbosity levels. Can be combine\
 d\n");
-	ft_printf("\t\t\t- 0 :\n");
-	ft_printf("\t\t\t- 1 :\n");
-	ft_printf("\t\t\t- 2 :\n");
-	ft_printf("\t\t\t- 4 :\n");
-	ft_printf("\t\t\t- 8 :\n");
-	ft_printf("\t\t\t- 16:\n");
+	ft_printf("\t\t\t- 0 : Show only essentials\n");
+	ft_printf("\t\t\t- 1 : Stop show lives\n");
+	ft_printf("\t\t\t- 2 : Show cycles\n");
+	ft_printf("\t\t\t- 4 : Show detailed cycles\n");
+	ft_printf("\t\t\t- 8 : Show player position\n");
+	ft_printf("\t\t\t- 16: Show deaths\n");
+	ft_printf("\t\t\t- 32: Show PC movements ???\n");
 	ft_printf("**** NCURSES OUTPUT MODE **********************************\n");
 	ft_printf("\t%{blue}-g%{eoc}\t: Ncurses(graphic) output mode\n");
 	ft_printf("***********************************************************\n");
@@ -42,8 +43,8 @@ static int			cw_vm_readf_and_pars(char **argv, t_args_data *ardata)
 {
 	if ((ardata->fd = open(argv[ardata->i], O_RDONLY)) < 0)
 	{
-		cw_vm_errormsg(argv[ardata->i]);
-		perror(" ");
+		cw_vm_errormsg("Can't open file: ");
+		ft_printf("%s\n", argv[ardata->i]);
 		return (-1);
 	}
 	if (checkn_and_pars(ardata) < 0)
@@ -51,8 +52,10 @@ static int			cw_vm_readf_and_pars(char **argv, t_args_data *ardata)
 	return (0);
 }
 
-static t_plr_ardata	*retnull_and_free(t_args_data *ardata)
+static t_plr_ardata	*retnull_and_free(t_args_data *ardata, char *msg)
 {
+	if (msg)
+		cw_vm_errormsg(msg);
 	ardata = cw_free_targsdata(ardata, 0);
 	return (NULL);
 }
@@ -64,25 +67,23 @@ static t_plr_ardata	*read_args(size_t argc, char **argv)
 	ardata = init_argsdata(1, -1, 0);
 	while (ardata->i < argc)
 	{
-		ardata->fd = -1;
 		if (argv[ardata->i][0] == '-')
 		{
 			if ((ardata->f = cw_vm_start_read_option(argc,
 			argv, &(ardata->i), &(ardata->num))) < 0)
-				return (retnull_and_free(ardata));
+				return (retnull_and_free(ardata, NULL));
 		}
 		else
 		{
 			if (cw_vm_readf_and_pars(argv, ardata) < 0)
-				return (retnull_and_free(ardata));
+				return (retnull_and_free(ardata, NULL));
 		}
 		(ardata->i)++;
 	}
 	if (ardata->plrdata == NULL)
-	{
-		cw_vm_errormsg("There are no champions.\n");
-		return (retnull_and_free(ardata));
-	}
+		return (retnull_and_free(ardata, "There are no champions.\n"));
+	if (cw_vm_setn(ardata) < 0)
+		return (retnull_and_free(ardata, NULL));
 	return (cw_free_targsdata(ardata, 1));
 }
 

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:34:30 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/06 18:58:28 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:09:33 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t			core_player_cntr(t_plr_ardata *chmpinit)
 	size_t	cntr;
 
 	cntr = 0;
-	while(chmpinit)
+	while (chmpinit)
 	{
 		chmpinit = chmpinit->next;
 		cntr++;
@@ -29,7 +29,7 @@ static unsigned char	*init_field(t_plr_ardata *chmp_init, size_t players)
 {
 	unsigned char	*arena_f;
 	unsigned char	*arena_head;
-	size_t	i;
+	size_t			i;
 
 	i = 0;
 	arena_f = ft_memalloc(MEM_SIZE);
@@ -41,7 +41,7 @@ static unsigned char	*init_field(t_plr_ardata *chmp_init, size_t players)
 		chmp_init = chmp_init->next;
 		i++;
 	}
-	return(arena_head);
+	return (arena_head);
 }
 
 t_vm					*cw_arena_init(t_plr_ardata *chmp_init)

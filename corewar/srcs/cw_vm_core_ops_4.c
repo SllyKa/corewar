@@ -6,11 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 23:54:35 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 00:00:45 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:12:44 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+extern char		g_flags;
 
 void		lldi(t_vm *vm, t_prcs *prcs)
 {
@@ -42,7 +44,7 @@ void		vm_lfork(t_vm *vm, t_prcs *prcs)
 
 	ft_printf("LFORRK+ uid: %d\n", r_geti(prcs->regs[0]));
 	tdir = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1), IND_SIZE);
-	pfork = init_process_cpy(prcs,vm_add_address(prcs->pc, tdir));
+	pfork = init_process_cpy(prcs, vm_add_address(prcs->pc, tdir));
 	vm->prcs = add_prc(vm->prcs, pfork);
 }
 
@@ -53,6 +55,6 @@ void		aff(t_vm *vm, t_prcs *prcs)
 
 	reg = ops_read_treg(vm->field, vm_add_address(prcs->pc, 1 + 1));
 	val = r_geti(prcs->regs[reg - 1]);
-	ft_printf("Aff: %c\n", val);
-	//cw_vm_memdump(vm);
+	if (((1 & g_flags) == 1) && (((2 & g_flags) != 2)))
+		ft_printf("Aff: %c\n", val);
 }

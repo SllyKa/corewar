@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 14:59:40 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 05:25:24 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:21:08 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static void		plrs_lives_upd(t_plr_ardata *plrdata, int uid)
 	while (pl)
 	{
 		if ((pl->uid * -1) == uid)
+		{
 			(pl->liven)++;
+			cw_vm_flags_verb_live(plrdata);
+		}
 		pl = pl->next;
 	}
 }
@@ -62,8 +65,8 @@ unsigned char argtype, int *s)
 	}
 	else if (argtype == T_DIR)
 	{
-		if (prcs->curop)
-		val = ops_read_tdir(vm->field,
+		if (prcs->curop) //?
+			val = ops_read_tdir(vm->field,
 		vm_add_address(prcs->pc, 1 + 1 + *s), DIR_SIZE);
 		*s = DIR_SIZE;
 	}
@@ -92,8 +95,8 @@ unsigned char argtype, int *s)
 	}
 	else if (argtype == T_DIR)
 	{
-		if (prcs->curop)
-		val = ops_read_tdir(vm->field,
+		if (prcs->curop) //?
+			val = ops_read_tdir(vm->field,
 		vm_add_address(prcs->pc, 1 + 1 + *s), IND_SIZE);
 		*s = IND_SIZE;
 	}

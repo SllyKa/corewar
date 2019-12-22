@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 12:37:23 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 01:31:46 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:06:39 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static size_t	arg_type_to_size(unsigned char opcode, t_arg_type val)
 	else if ((T_DIR & val) == T_DIR)
 	{
 		if (g_op_tab[opcode - 1].isadress)
-			return(IND_SIZE);
+			return (IND_SIZE);
 		else
 			return (DIR_SIZE);
 	}
@@ -51,7 +51,8 @@ int				chk_reg_valid(t_vm *vm, t_prcs *prc, unsigned char opcode,
 			tonext += CODE_REG_SIZE;
 		}
 		else
-			tonext += arg_type_to_size(opcode, vm_core_ops_argn_type(typebyte, i + 1));
+			tonext += arg_type_to_size(opcode,
+			vm_core_ops_argn_type(typebyte, i + 1));
 		i++;
 	}
 	return (0);
@@ -60,7 +61,7 @@ int				chk_reg_valid(t_vm *vm, t_prcs *prc, unsigned char opcode,
 unsigned char	typebyte_to_arg_type(unsigned char arg)
 {
 	if (arg == 0)
-		return arg;
+		return (arg);
 	if (arg == REG_CODE)
 		arg = T_REG;
 	else if (arg == DIR_CODE)

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 04:35:42 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:24:51 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,21 @@ t_prcs		*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev)
 		prev->next = dl;
 	cw_free_tprcs(temp);
 	return (dl);
+}
+
+void		cw_vm_cycle_set(t_vm *vm)
+{
+	if (vm->liven >= NBR_LIVE)
+	{
+		vm->cycles_to_die -= CYCLE_DELTA;
+		vm->checkn = 1;
+	}
+	else
+		(vm->checkn)++;
+	if (vm->checkn == MAX_CHECKS)
+	{
+		vm->cycles_to_die -= CYCLE_DELTA;
+		vm->checkn = 1;
+	}
+	vm->liven = 0;
 }

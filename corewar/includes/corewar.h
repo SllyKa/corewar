@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 04:14:45 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 05:51:33 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int				chk_opcode(unsigned char opcode);
 t_prcs			*add_prc(t_prcs *head, t_prcs *new);
 char			**vm_cpy_regs(char **regs);
 t_prcs			*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev);
+void			cw_vm_cycle_set(t_vm *vm);
 void			cw_vm_core_upd_live(t_vm *vm, int uid);
 unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
 int				arrgs_chse(t_vm *vm, t_prcs *prcs,
@@ -91,6 +92,10 @@ t_plr_ardata	*add_plrdata(t_plr_ardata *head, int uid,
 					char *data, size_t data_size);
 
 void			cw_vm_memdump(t_vm *arena);
+void			cw_vm_flags_verb_live(t_plr_ardata *plrdata);
+void			cw_vm_flags_verb_cycle(t_vm *vm);
+void			cw_vm_flags_verb_unitpos(t_prcs *prcs);
+void			cw_vm_flags_verb_deaths(t_prcs *prc, t_vm *vm);
 
 t_vm			*cw_free_vm(t_vm *vm);
 t_plr_ardata	*cw_free_all_tplrardata(t_plr_ardata *plrdata);

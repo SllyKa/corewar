@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/20 02:39:43 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:10:40 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ size_t			pass_bytes(unsigned char typebyte)
 	passn += res;
 	if (!(res = typebyte_to_byten((typebyte >> 4) & 3)))
 		return (passn + res);
-	passn += res;	
+	passn += res;
 	if (!(res = typebyte_to_byten((typebyte >> 2) & 3)))
 		return (passn + res);
-	passn += res;	
+	passn += res;
 	return (passn);
 }
 

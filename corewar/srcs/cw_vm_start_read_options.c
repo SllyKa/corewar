@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 21:15:08 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 01:59:32 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:29:10 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static int	check_next_arg(size_t argc, char **argv, size_t *i, int *num)
 	return (1);
 }
 
-int			cw_vm_start_read_option(size_t argc, char **argv, size_t *i, int *num)
+int			cw_vm_start_read_option(size_t argc, char **argv, size_t *i,
+int *num)
 {
 	if (argv[*i][1] != '\0')
 	{

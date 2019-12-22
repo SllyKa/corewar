@@ -6,13 +6,13 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:36:06 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/18 20:35:23 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 07:14:45 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-char	*r_mov(char *reg, void *data, size_t size)
+char			*r_mov(char *reg, void *data, size_t size)
 {
 	int		st;
 
@@ -42,14 +42,14 @@ unsigned char	*r_get(char *reg)
 	return (res);
 }
 
-void	*free_rget(unsigned char *val)
+void			*free_rget(unsigned char *val)
 {
 	free(val);
 	val = NULL;
 	return (val);
 }
 
-void	reverse_reg(unsigned char *reg)
+void			reverse_reg(unsigned char *reg)
 {
 	size_t	i;
 	char	tmp;
@@ -64,9 +64,9 @@ void	reverse_reg(unsigned char *reg)
 	}
 }
 
-int		r_geti(char *reg)
+int				r_geti(char *reg)
 {
-	int 			num;
+	int				num;
 	unsigned char	*r;
 
 	r = r_get(reg);

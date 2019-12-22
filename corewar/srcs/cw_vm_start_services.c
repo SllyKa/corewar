@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 21:37:18 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 03:17:34 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 09:18:26 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,25 @@ int			retneg_and_msg(char *msg)
 {
 	cw_vm_errormsg(msg);
 	return (-1);
+}
+
+void		swap_nodes(t_plr_ardata *a, t_plr_ardata *b)
+{
+	t_plr_ardata	*temp;
+
+	temp = (t_plr_ardata*)malloc(sizeof(t_plr_ardata));
+	// add copy comment
+	temp->uid = a->uid;
+	temp->name = a->name;
+	temp->data = a->data;
+	temp->data_size = a->data_size;
+	a->uid = b->uid;
+	a->name = b->name;
+	a->data = b->data;
+	a->data_size = b->data_size;
+	b->uid = temp->uid;
+	b->name = temp->name;
+	b->data = temp->data;
+	b->data_size = temp->data_size;
+	free(temp);
 }

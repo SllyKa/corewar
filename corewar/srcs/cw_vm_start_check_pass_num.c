@@ -6,11 +6,12 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:37:04 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 09:16:52 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 11:00:21 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_start.h"
+#include "corewar.h"
 
 static void			cw_vm_sortl(t_plr_ardata *ardata)
 {
@@ -88,7 +89,7 @@ int					checkn_and_pars(t_args_data *ardata)
 		close(ardata->fd);
 		return (-1);
 	}
-	// ardata->plrdata = parse();
+	parse_champ(&(ardata->plrdata), ardata->num, ardata->fd);
 	close(ardata->fd);
 	return (1);
 }

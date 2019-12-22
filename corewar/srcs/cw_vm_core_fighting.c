@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:11:46 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 12:04:46 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	exec_ops(t_vm *vm, t_prcs *prcs)
 	else if ((prcs->curop == 12) || (prcs->curop == 15))
 		prcs->pc = vm_add_address(prcs->pc, 1 + IND_SIZE);
 	else
-		prcs->pc = vm_add_address(prcs->pc, 1 + pass_bytes(typebyte));
+		prcs->pc = vm_add_address(prcs->pc, 1 + pass_bytes(typebyte, prcs));
 }
 
 static void	prcs_cycle(t_vm *vm, t_prcs *prcs)
@@ -84,7 +84,6 @@ static void	cw_vm_check(t_vm *vm)
 		}
 	}
 	cw_vm_cycle_set(vm);
-	cw_vm_flags_verb_cycle(vm);
 }
 
 int			cw_fight(t_vm *vm)
@@ -92,7 +91,6 @@ int			cw_fight(t_vm *vm)
 	int			i;
 	t_prcs		*prcs_head;
 
-	i = 0;
 	while (vm->prcs)
 	{
 		i = 0;
@@ -102,6 +100,7 @@ int			cw_fight(t_vm *vm)
 			prcs_cycle(vm, prcs_head);
 			i++;
 			(vm->cyclen)++;
+			cw_vm_flags_verb_cycle(vm);
 		}
 		cw_vm_check(vm);
 		if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen + 1)))

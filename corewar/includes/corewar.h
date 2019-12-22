@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:24:36 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 12:04:34 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_vm			*cw_arena_init(t_plr_ardata *chmp_init);
 t_prcs			*cw_prcs_init(t_vm *vm);
 int				cw_fight(t_vm *vm);
 int				check_opsign(t_vm *vm, t_prcs *prc);
-size_t			pass_bytes(unsigned char typebyte);
+size_t			pass_bytes(unsigned char typebyte, t_prcs *prc);
 int				chk_reg_valid(t_vm *vm, t_prcs *prcs, unsigned char opcode,
 unsigned char typebyte);
 unsigned char	typebyte_to_arg_type(unsigned char arg);
@@ -94,9 +94,6 @@ void			read_code_size(t_plr_ardata *plr, int fd);
 void			read_champ_code(t_plr_ardata *plr, int fd);
 
 void			parse_champ(t_plr_ardata **plr, int champ_id, int fd);
-
-
-
 
 void			cw_vm_memdump(t_vm *arena);
 void			cw_vm_flags_verb_live(t_plr_ardata *plrdata);

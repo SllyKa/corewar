@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:25:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:40:09 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 12:22:01 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ void		zjmp(t_vm *vm, t_prcs *prcs)
 
 	if (prcs->carry)
 	{
+		ft_printf("jump!\n");
 		offset = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1),
 		IND_SIZE);
-		prcs->pc += offset % IDX_MOD;
+		prcs->pc = vm_add_address(prcs->pc, offset % IDX_MOD);
+		ft_printf("POS: %d\n", offset);
 	}
 }
 
@@ -58,11 +60,11 @@ void		sti(t_vm *vm, t_prcs *prcs)
 	s1 = CODE_REG_SIZE;
 	reg = ops_read_treg(vm->field, vm_add_address(prcs->pc, 1 + 1));
 	val1 = arrgs_chse_dirt(vm, prcs, vm_core_ops_argn_type(typebyte, 2), &s1);
-	//ft_printf("VAL1: %d\n", val1);
+	//ft_printf("VAL1: %x\n", val1);
 	s2 = s1 + CODE_REG_SIZE;
 	val1 = (val1 + arrgs_chse_dirt(vm, prcs,
 	vm_core_ops_argn_type(typebyte, 3), &s2)) % IDX_MOD;
-	//ft_printf("VAL2: %d\n", val1);
+	//ft_printf("VAL2: %x\n", val1);
 	vm_writebreg(vm->field, vm_add_address(prcs->pc, val1),
 	prcs->regs[reg - 1], REG_SIZE);
 	ft_memset(vm->vsfield + vm_add_address(prcs->pc, val1),

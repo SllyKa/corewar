@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:11:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:39:42 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 12:23:27 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		live(t_vm *vm, t_prcs *prcs)
 	r1 = *((int*)tdir);
 	tdir = free_rget(tdir);
 	prcs->livecycle = vm->cyclen;
+	ft_printf("live!\n");
 	if (uid == r1)
 		cw_vm_core_upd_live(vm, r1);
 }

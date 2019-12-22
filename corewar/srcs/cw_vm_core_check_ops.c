@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:10:40 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 12:04:09 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int		chk_types_byte(unsigned char opcode, unsigned char typebyte)
 	return (1);
 }
 
-static size_t	typebyte_to_byten(unsigned char arg)
+static size_t	typebyte_to_byten(unsigned char arg, t_prcs *prc)
 {
 	size_t		passn;
 
@@ -45,27 +45,31 @@ static size_t	typebyte_to_byten(unsigned char arg)
 		return (passn);
 	if (arg == REG_CODE)
 		passn += CODE_REG_SIZE;
-	// have to add 2 or 4 choose further
 	else if (arg == DIR_CODE)
-		passn += DIR_SIZE;
+	{
+		if (g_op_tab[prc->curop - 1].isadress == 1)
+			passn += IND_SIZE;
+		else
+			passn += DIR_SIZE;
+	}
 	else if (arg == IND_CODE)
 		passn += IND_SIZE;
 	return (passn);
 }
 
-size_t			pass_bytes(unsigned char typebyte)
+size_t			pass_bytes(unsigned char typebyte, t_prcs *prc)
 {
 	size_t			passn;
 	size_t			res;
 
 	passn = 1;
-	if (!(res = typebyte_to_byten((typebyte >> 6) & 3)))
+	if (!(res = typebyte_to_byten((typebyte >> 6) & 3, prc)))
 		return (passn + res);
 	passn += res;
-	if (!(res = typebyte_to_byten((typebyte >> 4) & 3)))
+	if (!(res = typebyte_to_byten((typebyte >> 4) & 3, prc)))
 		return (passn + res);
 	passn += res;
-	if (!(res = typebyte_to_byten((typebyte >> 2) & 3)))
+	if (!(res = typebyte_to_byten((typebyte >> 2) & 3, prc)))
 		return (passn + res);
 	passn += res;
 	return (passn);
@@ -82,12 +86,12 @@ int				check_opsign(t_vm *vm, t_prcs *prc)
 	{
 		if (g_op_tab[prc->curop - 1].istypeb == 1 &&
 		chk_types_byte(prc->curop, typebyte) < 0)
-			prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+			prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte, prc));
 		else
 		{
 			if (g_op_tab[prc->curop - 1].istypeb == 1 &&
 			chk_reg_valid(vm, prc, prc->curop, typebyte) < 0)
-				prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte));
+				prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte, prc));
 			else
 				return (1);
 		}

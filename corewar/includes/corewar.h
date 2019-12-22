@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 05:51:33 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:24:36 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,11 @@ void			lldi(t_vm *vm, t_prcs *prcs);
 void			vm_lfork(t_vm *vm, t_prcs *prcs);
 void			aff(t_vm *vm, t_prcs *prcs);
 
-
-
 char			**init_regs(int r1);
 t_prcs			*init_process_start(int r1, size_t pc);
 t_prcs			*init_process_cpy(t_prcs *src, size_t pc);
 t_vm			*init_arena(t_plr_ardata *plrdata, size_t players,
-unsigned char *field);
+unsigned char *field, unsigned char *vsfield);
 
 t_vm			*cw_arena_init(t_plr_ardata *chmp_init);
 t_prcs			*cw_prcs_init(t_vm *vm);

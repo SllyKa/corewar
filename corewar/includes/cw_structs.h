@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 01:31:27 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:13:21 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_vm
 	int				checkn;
 	size_t			players;
 	unsigned char	*field;
+	unsigned char	*vsfield;
 	size_t			field_size;
 	t_prcs			*prcs;
 }				t_vm;

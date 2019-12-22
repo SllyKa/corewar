@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:11:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:24:39 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:39:42 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void		st(t_vm *vm, t_prcs *prcs)
 		revreg = r_get(prcs->regs[reg - 1]);
 		reverse_reg(revreg);
 		vm_writeb(vm->field, vm_add_address(prcs->pc, tind), revreg, REG_SIZE);
+		ft_memset(vm->vsfield + vm_add_address(prcs->pc, tind),
+		r_geti(prcs->regs[0]) * -1, REG_SIZE); //for_vis
 		free_rget(revreg);
 	}
 }

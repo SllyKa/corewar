@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 01:31:52 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:23:56 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_prcs			*init_process_cpy(t_prcs *src, size_t pc)
 }
 
 t_vm			*init_arena(t_plr_ardata *plrdata, size_t players,
-unsigned char *field)
+unsigned char *field, unsigned char *vsfield)
 {
 	t_vm	*new_arena;
 
@@ -77,6 +77,7 @@ unsigned char *field)
 	new_arena->players = players;
 	new_arena->field = field;
 	new_arena->field_size = MEM_SIZE;
+	new_arena->vsfield = vsfield;
 	new_arena->prcs = NULL;
 	return (new_arena);
 }

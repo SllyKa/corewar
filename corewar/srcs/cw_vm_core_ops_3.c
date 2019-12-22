@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:25:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:16:25 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 10:40:09 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void		sti(t_vm *vm, t_prcs *prcs)
 	//ft_printf("VAL2: %d\n", val1);
 	vm_writebreg(vm->field, vm_add_address(prcs->pc, val1),
 	prcs->regs[reg - 1], REG_SIZE);
+	ft_memset(vm->vsfield + vm_add_address(prcs->pc, val1),
+	r_geti(prcs->regs[0]) * -1, REG_SIZE); //for_vis
 }
 
 void		vm_fork(t_vm *vm, t_prcs *prcs)

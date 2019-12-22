@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:11:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 12:23:27 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 13:11:08 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 void		live(t_vm *vm, t_prcs *prcs)
 {
-	unsigned char	*tdir;
+	//unsigned char	*tdir;
 	int				uid;
-	int				r1;
+	//int				r1;
 
 	uid = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1), DIR_SIZE);
-	tdir = r_get(prcs->regs[0]);
-	r1 = *((int*)tdir);
-	tdir = free_rget(tdir);
+	//tdir = r_get(prcs->regs[0]);
+	//r1 = *((int*)tdir);
+	//tdir = free_rget(tdir);
 	prcs->livecycle = vm->cyclen;
-	ft_printf("live!\n");
-	if (uid == r1)
-		cw_vm_core_upd_live(vm, r1);
+	if (uid == (prcs->uid * -1))
+		cw_vm_core_upd_live(vm, uid);
 }
 
 void		ld(t_vm *vm, t_prcs *prcs)

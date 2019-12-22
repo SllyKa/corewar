@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 03:50:21 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:08:39 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:14:02 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_vm			*cw_free_vm(t_vm *vm)
 		vm->plrdata = cw_free_all_tplrardata(vm->plrdata);
 	if (vm->field)
 		free(vm->field);
+	if (vm->vsfield)
+		free(vm->vsfield);
 	if (vm->prcs)
 		cw_free_all_tprcs(vm->prcs);
 	free(vm);
@@ -35,12 +37,12 @@ t_plr_ardata	*cw_free_all_tplrardata(t_plr_ardata *plrdata)
 	while (plrdata)
 	{
 		temp = plrdata;
+		plrdata = plrdata->next;
 		if (temp->name)
 			free(temp->name);
 		if (temp->data)
 			free(temp->data);
 		free(temp);
-		plrdata = plrdata->next;
 	}
 	return (NULL);
 }

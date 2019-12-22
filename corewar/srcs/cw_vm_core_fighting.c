@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 12:47:13 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 13:17:34 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,19 @@ int			cw_fight(t_vm *vm)
 		i = 0;
 		while (i < vm->cycles_to_die)
 		{
-			cw_vs_print_frame(vm);
+			//cw_vs_print_frame(vm);
 			prcs_head = vm->prcs;
 			prcs_cycle(vm, prcs_head);
 			i++;
 			(vm->cyclen)++;
 			cw_vm_flags_verb_cycle(vm);
+			if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen + 1)))
+			{
+				cw_vm_memdump(vm);
+				return (0);
+			}
 		}
 		cw_vm_check(vm);
-		if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen + 1)))
-		{
-			cw_vm_memdump(vm);
-			return (0);
-		}
 	}
 	return (0);
 }

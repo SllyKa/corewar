@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:13:21 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 13:05:54 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_prcs
 {
 	char			carry;
 	size_t			pc;
+	int				uid;
 	int				livecycle;
 	int				waitcycle;
 	unsigned char	curop;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:37:04 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 11:00:21 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:26:02 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ static void			cw_vm_sortl(t_plr_ardata *ardata)
 	}
 }
 
+static int			cw_vm_check_max(t_args_data *ardata, int pnum)
+{
+	t_plr_ardata	*pdata;
+	
+	pdata = ardata->plrdata;
+	while (pdata)
+	{
+		if (pdata->uid > pnum)
+			return (retneg_and_msg("Number is too big.\n"));
+		pdata = pdata->next;
+	}
+	return (1);
+}
+
 int					cw_vm_setn(t_args_data *ardata)
 {
 	t_plr_ardata	*pdata;
@@ -54,12 +68,15 @@ int					cw_vm_setn(t_args_data *ardata)
 			while (is_in_tree(ardata->root, numpul))
 				numpul++;
 			pdata->uid = numpul;
+			numpul++;
 		}
 		plrnum++;
 		pdata = pdata->next;
 	}
 	if (plrnum > MAX_PLAYERS)
 		return (retneg_and_msg("Too many champions.\n"));
+	if (cw_vm_check_max(ardata, plrnum) < 0)
+		return (-1);
 	cw_vm_sortl(ardata->plrdata);
 	return (1);
 }

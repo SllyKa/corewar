@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:25:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 12:22:01 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/22 13:11:38 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void		zjmp(t_vm *vm, t_prcs *prcs)
 
 	if (prcs->carry)
 	{
-		ft_printf("jump!\n");
 		offset = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1),
 		IND_SIZE);
 		prcs->pc = vm_add_address(prcs->pc, offset % IDX_MOD);
-		ft_printf("POS: %d\n", offset);
 	}
 }
 

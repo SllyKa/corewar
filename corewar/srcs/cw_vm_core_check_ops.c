@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 01:30:47 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:05:58 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t			pass_bytes(unsigned char typebyte, t_prcs *prc)
 		return (passn);
 	passn += typebyte_to_byten((typebyte >> 4) & 3, prc);
 	if (g_op_tab[prc->curop - 1].argnum < 3)
-		return (passn);	
+		return (passn);
 	passn += typebyte_to_byten((typebyte >> 2) & 3, prc);
 	return (passn);
 }
@@ -88,7 +88,8 @@ int				check_opsign(t_vm *vm, t_prcs *prc)
 		{
 			if (g_op_tab[prc->curop - 1].istypeb == 1 &&
 			chk_reg_valid(vm, prc, prc->curop, typebyte) < 0)
-				prc->pc = vm_add_address(prc->pc, 1 + pass_bytes(typebyte, prc));
+				prc->pc = vm_add_address(prc->pc,
+				1 + pass_bytes(typebyte, prc));
 			else
 				return (1);
 		}

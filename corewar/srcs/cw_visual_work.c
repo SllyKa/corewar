@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_visual_work.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 19:14:33 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/21 19:14:36 by bjesse           ###   ########.fr       */
+/*   Updated: 2019/12/24 02:04:17 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	cw_vs_refresh_windows(void)
 
 void	init_window(void)
 {
-	*window_singleton() = newwin(MEM_HEIGHT + 2, MEM_WIDTH + INFO_WIDTH + 2, 0, 0);
+	*window_singleton() = newwin(MEM_HEIGHT + 2,
+	MEM_WIDTH + INFO_WIDTH + 2, 0, 0);
 }
 
 void	reinit_visual(void)
@@ -40,7 +41,8 @@ void	pause_game(void)
 	wmove(get_window(), 1, MEM_WIDTH + 4);
 	wprintw(get_window(), "PAUSE");
 	cw_vs_refresh_windows();
-	while ((input  = getch()) == ERR) ;
+	while ((input = getch()) == ERR)
+		;
 	if (input == 27 || input == 'q')
 	{
 		exit(0);

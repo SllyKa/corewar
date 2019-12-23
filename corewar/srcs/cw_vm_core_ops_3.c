@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:25:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 01:56:46 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:31:17 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,21 +85,17 @@ void		lld(t_vm *vm, t_prcs *prcs)
 	argtype = vm_core_ops_argn_type(argtype, 1);
 	if (argtype == T_DIR)
 	{
-		val = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1 + 1),
-		DIR_SIZE);
+		val = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 2), DIR_SIZE);
 		prcs->carry = ((val) ? 0 : 1);
-		reg = ops_read_treg(vm->field, vm_add_address(prcs->pc,
-		1 + 1 + DIR_SIZE));
+		reg = ops_read_treg(vm->field, vm_add_address(prcs->pc, 2 + DIR_SIZE));
 		(prcs->regs)[reg - 1] = r_mov((prcs->regs)[reg - 1], &val,
 		DIR_SIZE);
 	}
 	else if (argtype == T_IND)
 	{
-		val = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 1 + 1),
-		IND_SIZE);
+		val = ops_read_tdir(vm->field, vm_add_address(prcs->pc, 2), IND_SIZE);
 		prcs->carry = ((val) ? 0 : 1);
-		reg = ops_read_treg(vm->field, vm_add_address(prcs->pc,
-		1 + 1 + IND_SIZE));
+		reg = ops_read_treg(vm->field, vm_add_address(prcs->pc, 2 + IND_SIZE));
 		val = ops_read_tdir(vm->field, vm_add_address(prcs->pc, val),
 		DIR_SIZE);
 		prcs->carry = ((val) ? 0 : 1);

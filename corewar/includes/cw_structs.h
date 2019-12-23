@@ -6,15 +6,15 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 13:05:54 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:41:02 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CW_STRUCTS_H
 # define CW_STRUCTS_H
 
-#include "libftprintf.h"
-#include "avlt.h"
+# include "libftprintf.h"
+# include "avlt.h"
 
 typedef struct	s_plr_ardata
 {
@@ -36,7 +36,7 @@ typedef struct	s_prcs
 	unsigned char	curop;
 	int				nextop;
 	char			**regs;
-	struct s_prcs	*next;	
+	struct s_prcs	*next;
 }				t_prcs;
 
 typedef struct	s_vm

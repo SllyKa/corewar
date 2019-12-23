@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 14:59:40 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 19:46:55 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:21:29 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ unsigned char argtype, int *s)
 	}
 	else if (argtype == T_DIR)
 	{
-		//if (prcs->curop) //?
-			val = ops_read_tdir(vm->field,
+		val = ops_read_tdir(vm->field,
 		vm_add_address(prcs->pc, 1 + 1 + *s), DIR_SIZE);
 		*s = DIR_SIZE;
 	}
@@ -94,8 +93,7 @@ unsigned char argtype, int *s)
 	}
 	else if (argtype == T_DIR)
 	{
-		//if (prcs->curop) //?
-			val = ops_read_tdir(vm->field,
+		val = ops_read_tdir(vm->field,
 		vm_add_address(prcs->pc, 1 + 1 + *s), IND_SIZE);
 		*s = IND_SIZE;
 	}

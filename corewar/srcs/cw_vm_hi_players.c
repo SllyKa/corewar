@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 06:15:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 20:58:39 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:31:41 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void			cw_vm_introduce_players(t_plr_ardata *plrdata)
 	int				minuid;
 	size_t			maxplrs;
 	size_t			i;
-	// redesign it
 
 	i = 0;
 	minuid = 1;

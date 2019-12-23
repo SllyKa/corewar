@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 21:37:18 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 09:18:26 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:34:36 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		swap_nodes(t_plr_ardata *a, t_plr_ardata *b)
 	t_plr_ardata	*temp;
 
 	temp = (t_plr_ardata*)malloc(sizeof(t_plr_ardata));
-	// add copy comment
+	// add copy commentary
 	temp->uid = a->uid;
 	temp->name = a->name;
 	temp->data = a->data;

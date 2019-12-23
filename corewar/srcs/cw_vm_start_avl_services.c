@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:32:39 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:28:33 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:33:18 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void		*ins(void *data)
 {
 	int		*a;
-	
+
 	a = (int*)ft_memalloc(sizeof(int));
 	*a = *((int*)data);
 	return (a);

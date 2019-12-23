@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:34:30 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:24:13 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:10:19 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static unsigned char	*init_vsfield(t_plr_ardata *chmp_init, size_t players)
 	arena_head = arena_f;
 	while (i < players)
 	{
-		ft_memset(arena_f, (unsigned char)(chmp_init->uid), chmp_init->data_size);
+		ft_memset(arena_f, (unsigned char)(chmp_init->uid),
+		chmp_init->data_size);
 		arena_f = arena_f + (MEM_SIZE / players);
 		chmp_init = chmp_init->next;
 		i++;

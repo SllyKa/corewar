@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 22:09:42 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:20:11 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,16 +107,8 @@ int			cw_fight(t_vm *vm)
 			cw_vm_flags_verb_cycle(vm);
 			if ((2 & g_flags) == 2)
 				cw_vs_print_frame(vm);
-			if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
-			{
-				if ((2 & g_flags) == 2)
-					pause_game();
-				else
-				{
-					cw_vm_memdump(vm);
-					return (0);
-				}
-			}
+			if (!cw_vm_chk_memdump(vm))
+				return (0);
 		}
 		cw_vm_check(vm);
 	}

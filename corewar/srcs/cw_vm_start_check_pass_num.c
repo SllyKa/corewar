@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:37:04 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 14:26:02 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:35:33 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void			cw_vm_sortl(t_plr_ardata *ardata)
 static int			cw_vm_check_max(t_args_data *ardata, int pnum)
 {
 	t_plr_ardata	*pdata;
-	
+
 	pdata = ardata->plrdata;
 	while (pdata)
 	{

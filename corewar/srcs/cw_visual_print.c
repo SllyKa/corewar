@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_visual_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 19:14:27 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/21 19:14:39 by bjesse           ###   ########.fr       */
+/*   Updated: 2019/12/24 02:08:53 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info)
 	{
 		y = i / 64 + 1;
 		x = 2 * i % 128;
-		x += x/2;
-		mvwaddch(get_window(), y, x + 1, ft_itoa_char(arena[i] / 16) | COLOR_PAIR(arena_info[i]));
-		mvwaddch(get_window(), y, x + 2, ft_itoa_char(arena[i] % 16) | COLOR_PAIR(arena_info[i]));
+		x += x / 2;
+		mvwaddch(get_window(), y, x + 1,
+		ft_itoa_char(arena[i] / 16) | COLOR_PAIR(arena_info[i]));
+		mvwaddch(get_window(), y, x + 2,
+		ft_itoa_char(arena[i] % 16) | COLOR_PAIR(arena_info[i]));
 		i++;
 	}
 }
@@ -49,7 +51,6 @@ void	cw_vs_print_players(t_vm *vm)
 }
 
 double	g_delay;
-
 
 void	cw_vs_print_info(t_vm *vm)
 {
@@ -82,10 +83,12 @@ void	cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
 		i = prcs->pc;
 		y = i / 64;
 		x = 2 * i % 128 + 1;
-		x += x/2;
+		x += x / 2;
 		to_print = arena[i];
-		mvwaddch(get_window(), y + 1, x + 1, ft_itoa_char(to_print % 16) | A_STANDOUT | COLOR_PAIR(3)); // | COLOR_PAIR(3)
-		mvwaddch(get_window(), y + 1, x, ft_itoa_char(to_print / 16) | A_STANDOUT | COLOR_PAIR(3)); // | COLOR_PAIR(3)
+		mvwaddch(get_window(), y + 1, x + 1,
+		ft_itoa_char(to_print % 16) | A_STANDOUT | COLOR_PAIR(3));
+		mvwaddch(get_window(), y + 1, x,
+		ft_itoa_char(to_print / 16) | A_STANDOUT | COLOR_PAIR(3));
 		prcs = prcs->next;
 	}
 }

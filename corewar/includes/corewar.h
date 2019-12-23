@@ -6,21 +6,20 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 00:45:47 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 02:44:43 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
-
 # include <stdlib.h>
 # include "op.h"
 # include "libftprintf.h"
 # include "cw_structs.h"
-#include "cw_visual.h"
+# include "cw_visual.h"
 
-# define	CODE_REG_SIZE	1
+# define CODE_REG_SIZE	1
 
 void			live(t_vm *vm, t_prcs *prcs);
 void			ld(t_vm *vm, t_prcs *prcs);
@@ -60,7 +59,7 @@ void			*free_rget(unsigned char *val);
 void			reverse_reg(unsigned char *reg);
 int				r_geti(char *reg);
 
-unsigned char 	deref_pntr(unsigned char *field, size_t pntr);
+unsigned char	deref_pntr(unsigned char *field, size_t pntr);
 size_t			vm_add_address(size_t pc, int offset);
 int				vm_btoi(unsigned char *bytes, size_t size);
 int				chk_opcode(unsigned char opcode);
@@ -69,6 +68,7 @@ char			**vm_cpy_regs(char **regs);
 t_prcs			*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev);
 void			cw_vm_cycle_set(t_vm *vm);
 void			cw_vm_checkg_flag(void);
+int				cw_vm_chk_memdump(t_vm *vm);
 void			cw_vm_core_upd_live(t_vm *vm, int uid);
 unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
 int				arrgs_chse(t_vm *vm, t_prcs *prcs,
@@ -79,7 +79,7 @@ unsigned char argtype, int *s);
 int				ops_read_tdir(unsigned char *field, size_t addr, size_t size);
 int				ops_read_treg(unsigned char *field, size_t addr);
 int				ops_read_tind(unsigned char *field, size_t addr);
-unsigned char	*vm_core_add(unsigned char *val1, unsigned char *val2, 
+unsigned char	*vm_core_add(unsigned char *val1, unsigned char *val2,
 int size1, int *size2);
 
 unsigned char	*vm_readb(unsigned char *field, size_t pos, size_t size);

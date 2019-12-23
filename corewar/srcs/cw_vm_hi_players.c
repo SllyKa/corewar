@@ -6,11 +6,15 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 06:15:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 13:03:57 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:58:39 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar_start.h"
+
+extern char	g_flags;
+extern int	g_verbf;
+extern int	g_memdmp;
 
 static size_t	cw_vm_plrs_countt(t_plr_ardata *pldata)
 {
@@ -69,6 +73,8 @@ void			cw_vm_won_player(t_vm *vm)
 {
 	t_plr_ardata	*pdata;
 
+	if (g_memdmp > 0)
+		return ;
 	pdata = vm->plrdata;
 	while (pdata)
 	{

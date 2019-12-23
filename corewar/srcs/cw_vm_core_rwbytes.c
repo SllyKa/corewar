@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 12:50:38 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:32:06 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 00:44:41 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ void *data, size_t size)
 		delsize = (adrs + size) - MEM_SIZE;
 		ft_memcpy(field + adrs, data, size - delsize);
 		ft_memcpy(field, data + delsize, delsize);
+	}
+}
+
+void			vm_vis_writeb(unsigned char *field, size_t adrs,
+int plrnum, size_t size)
+{
+	size_t		delsize;
+
+	if ((adrs + size) <= MEM_SIZE)
+		ft_memset(field + adrs, plrnum, size);
+	else
+	{
+		delsize = (adrs + size) - MEM_SIZE;
+		ft_memset(field + adrs, plrnum, size - delsize);
+		ft_memset(field, plrnum, delsize);
 	}
 }
 

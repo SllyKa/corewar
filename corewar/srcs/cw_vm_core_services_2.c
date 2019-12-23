@@ -6,11 +6,14 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:24:51 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/23 20:26:22 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+extern char		g_flags;
+extern int		g_verbf;
 
 char		**vm_cpy_regs(char **regs)
 {
@@ -45,6 +48,19 @@ t_prcs		*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev)
 	return (dl);
 }
 
+static void	cw_vm_upd_live(t_vm *vm)
+{
+	t_plr_ardata	*pl;
+
+	vm->liven = 0;
+	pl = vm->plrdata;
+	while (pl)
+	{
+		pl->liven = 0;
+		pl = pl->next;
+	}
+}
+
 void		cw_vm_cycle_set(t_vm *vm)
 {
 	if (vm->liven >= NBR_LIVE)
@@ -54,10 +70,19 @@ void		cw_vm_cycle_set(t_vm *vm)
 	}
 	else
 		(vm->checkn)++;
-	if (vm->checkn == MAX_CHECKS)
+	if (vm->checkn == MAX_CHECKS + 1)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
 		vm->checkn = 1;
 	}
-	vm->liven = 0;
+	cw_vm_upd_live(vm);
+}
+
+void		cw_vm_checkg_flag(void)
+{
+	if ((2 & g_flags) == 2)
+	{
+		g_flags |= 1;
+		g_verbf |= 1;
+	}
 }

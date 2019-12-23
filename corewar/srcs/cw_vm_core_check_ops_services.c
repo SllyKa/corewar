@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 12:37:23 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:06:39 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/23 22:09:18 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				chk_reg_valid(t_vm *vm, t_prcs *prc, unsigned char opcode,
 		if ((T_REG & vm_core_ops_argn_type(typebyte, i + 1)) == T_REG)
 		{
 			reg_val = ops_read_treg(vm->field, vm_add_address(prc->pc, tonext));
-			if ((reg_val >= REG_NUMBER) || (reg_val <= 0))
+			if ((reg_val > REG_NUMBER) || (reg_val <= 0))
 				return (-1);
 			tonext += CODE_REG_SIZE;
 		}

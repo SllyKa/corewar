@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 06:12:39 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 10:44:16 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 01:31:26 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ d\n");
 	ft_printf("\t\t\t- 4 : Show detailed cycles\n");
 	ft_printf("\t\t\t- 8 : Show player position\n");
 	ft_printf("\t\t\t- 16: Show deaths\n");
-	ft_printf("\t\t\t- 32: Show PC movements ???\n");
 	ft_printf("**** NCURSES OUTPUT MODE **********************************\n");
 	ft_printf("\t%{blue}-g%{eoc}\t: Ncurses(graphic) output mode\n");
 	ft_printf("***********************************************************\n");

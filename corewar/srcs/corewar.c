@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 06:10:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 14:00:21 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 01:31:08 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ int		main(int argc, char **argv)
 
 	if (!(plrardata = cw_vm_start(argc, argv)))
 		return (0);
+	cw_vm_checkg_flag();
 	cw_vm_introduce_players(plrardata);
 	vm = cw_arena_init(plrardata);
-	cw_vm_memdump(vm);
 	vm->prcs = cw_prcs_init(vm);
-	init_visual();
-	cw_vs_print_frame(vm);
-	pause_game();
+	if ((2 & g_flags) == 2)
+	{
+		init_visual();
+		cw_vs_print_frame(vm);
+		pause_game();
+	}
 	cw_fight(vm);
 	cw_vm_won_player(vm);
 	cw_free_vm(vm);

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 12:04:09 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 01:30:47 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,15 @@ static size_t	typebyte_to_byten(unsigned char arg, t_prcs *prc)
 size_t			pass_bytes(unsigned char typebyte, t_prcs *prc)
 {
 	size_t			passn;
-	size_t			res;
 
 	passn = 1;
-	if (!(res = typebyte_to_byten((typebyte >> 6) & 3, prc)))
-		return (passn + res);
-	passn += res;
-	if (!(res = typebyte_to_byten((typebyte >> 4) & 3, prc)))
-		return (passn + res);
-	passn += res;
-	if (!(res = typebyte_to_byten((typebyte >> 2) & 3, prc)))
-		return (passn + res);
-	passn += res;
+	passn += typebyte_to_byten((typebyte >> 6) & 3, prc);
+	if (g_op_tab[prc->curop - 1].argnum < 2)
+		return (passn);
+	passn += typebyte_to_byten((typebyte >> 4) & 3, prc);
+	if (g_op_tab[prc->curop - 1].argnum < 3)
+		return (passn);	
+	passn += typebyte_to_byten((typebyte >> 2) & 3, prc);
 	return (passn);
 }
 

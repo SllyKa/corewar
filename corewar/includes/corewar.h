@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 13:08:19 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/24 00:45:47 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_prcs			*add_prc(t_prcs *head, t_prcs *new);
 char			**vm_cpy_regs(char **regs);
 t_prcs			*cw_del_prcs(t_vm *vm, t_prcs *dl, t_prcs *prev);
 void			cw_vm_cycle_set(t_vm *vm);
+void			cw_vm_checkg_flag(void);
 void			cw_vm_core_upd_live(t_vm *vm, int uid);
 unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
 int				arrgs_chse(t_vm *vm, t_prcs *prcs,
@@ -87,6 +88,8 @@ size_t size);
 void			vm_writebreg(unsigned char *field, size_t adrs,
 void *reg, size_t size);
 void			*free_vm_readb(unsigned char *bt);
+void			vm_vis_writeb(unsigned char *field, size_t adrs,
+int plrnum, size_t size);
 
 void			error_exit(char *str);
 void			read_champ_name(t_plr_ardata *plr, int fd);
@@ -100,6 +103,7 @@ void			parse_champ(t_plr_ardata **plr, int champ_id, int fd);
 void			cw_vm_memdump(t_vm *arena);
 void			cw_vm_flags_verb_live(t_plr_ardata *plrdata);
 void			cw_vm_flags_verb_cycle(t_vm *vm);
+void			cw_vm_flags_verb_detcycle(t_vm *vm);
 void			cw_vm_flags_verb_unitpos(t_prcs *prcs);
 void			cw_vm_flags_verb_deaths(t_prcs *prc, t_vm *vm);
 

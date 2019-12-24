@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_core_services_3.c                            :+:      :+:    :+:   */
+/*   ft_strcl.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 02:17:24 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 03:05:29 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/04/08 12:14:27 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/08 12:15:56 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "libft.h"
 
-extern int	g_memdmp;
-extern char	g_flags;
-
-int		cw_vm_chk_memdump(t_vm *vm)
+void	ft_strclr(char *s)
 {
-	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
+	int i;
+
+	i = 0;
+	if (s)
 	{
-		if ((2 & g_flags) == 2)
-			pause_game();
-		else
+		while (s[i])
 		{
-			cw_vm_memdump(vm);
-			return (0);
+			s[i] = '\0';
+			i++;
 		}
 	}
-	return (1);
 }

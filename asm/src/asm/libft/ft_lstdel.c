@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_core_services_3.c                            :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 02:17:24 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 03:05:29 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/04/09 15:22:50 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/16 12:44:58 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "libft.h"
 
-extern int	g_memdmp;
-extern char	g_flags;
-
-int		cw_vm_chk_memdump(t_vm *vm)
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
+	t_list *tmp;
+	t_list *buf;
+
+	if (alst && *alst)
 	{
-		if ((2 & g_flags) == 2)
-			pause_game();
-		else
+		buf = *alst;
+		while (buf)
 		{
-			cw_vm_memdump(vm);
-			return (0);
+			tmp = buf->next;
+			del(buf->content, buf->content_size);
+			free(buf);
+			buf = tmp;
 		}
+		*alst = NULL;
 	}
-	return (1);
 }

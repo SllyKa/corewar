@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_core_services_3.c                            :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 02:17:24 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 03:05:29 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/04/08 12:16:30 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/08 12:21:06 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "libft.h"
 
-extern int	g_memdmp;
-extern char	g_flags;
-
-int		cw_vm_chk_memdump(t_vm *vm)
+void	ft_striter(char *s, void (*f)(char*))
 {
-	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
+	int i;
+
+	i = 0;
+	if (s && f)
 	{
-		if ((2 & g_flags) == 2)
-			pause_game();
-		else
+		while (s[i])
 		{
-			cw_vm_memdump(vm);
-			return (0);
+			f(&s[i]);
+			i++;
 		}
 	}
-	return (1);
 }

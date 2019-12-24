@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_core_services_3.c                            :+:      :+:    :+:   */
+/*   ft_strequi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/24 02:17:24 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 03:05:29 by gbrandon         ###   ########.fr       */
+/*   Created: 2019/04/08 13:05:34 by fsinged           #+#    #+#             */
+/*   Updated: 2019/04/15 16:32:07 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "libft.h"
 
-extern int	g_memdmp;
-extern char	g_flags;
-
-int		cw_vm_chk_memdump(t_vm *vm)
+int	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
+	size_t i;
+
+	if (!s1 && !s2)
+		return (1);
+	if (!s1 || !s2)
+		return (0);
+	i = 0;
+	while ((*s1 || *s2) && i < n)
 	{
-		if ((2 & g_flags) == 2)
-			pause_game();
-		else
-		{
-			cw_vm_memdump(vm);
+		if (*s1 != *s2)
 			return (0);
-		}
+		s1++;
+		s2++;
+		i++;
 	}
 	return (1);
 }

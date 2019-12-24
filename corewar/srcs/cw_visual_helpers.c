@@ -26,3 +26,16 @@ int		get_process_quan(t_vm *vm)
 	}
 	return (y);
 }
+
+void	cw_vs_print_win(t_vm *vm, char *name)
+{
+	cw_vs_clear_windows();
+	box(get_window(), '*' | A_STANDOUT, '*' | A_STANDOUT);
+	cw_vs_print_memory(vm->field, vm->vsfield);
+	cw_vs_print_prcs(vm->prcs, vm->field);
+	cw_vs_print_info(vm);
+	cw_vs_refresh_windows();
+	wmove(get_window(), 1, MEM_WIDTH + 4);
+	wprintw(get_window(), "Champinion %s win!", name);
+	getch();
+}

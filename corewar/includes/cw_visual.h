@@ -42,4 +42,10 @@ int		get_process_quan(t_vm *vm);
 void	init_window();
 void	reinit_visual();
 
+void	cw_vs_print_win(t_vm *vm, char *name);
+void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info);
+void	cw_vs_print_players(t_vm *vm);
+void	cw_vs_print_info(t_vm *vm);
+void	cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena);
+
 #endif

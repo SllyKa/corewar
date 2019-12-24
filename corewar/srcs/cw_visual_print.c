@@ -24,6 +24,8 @@ void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info)
 		y = i / 64 + 1;
 		x = 2 * i % 128;
 		x += x / 2;
+		if (arena_info[i] > 4)
+			arena_info[i] = 0;
 		mvwaddch(get_window(), y, x + 1,
 		ft_itoa_char(arena[i] / 16) | COLOR_PAIR(arena_info[i]));
 		mvwaddch(get_window(), y, x + 2,
@@ -38,7 +40,7 @@ void	cw_vs_print_players(t_vm *vm)
 	int				y;
 
 	now_player = vm->plrdata;
-	y = 15;
+	y = 17;
 	while (now_player)
 	{
 		wmove(get_window(), y++, MEM_WIDTH + 4);
@@ -63,20 +65,22 @@ void	cw_vs_print_info(t_vm *vm)
 	wmove(get_window(), 7, MEM_WIDTH + 4);
 	wprintw(get_window(), "CYCLE_TO_DIE : %d", vm->cycles_to_die);
 	wmove(get_window(), 9, MEM_WIDTH + 4);
-	wprintw(get_window(), "LIVEN : %d", vm->liven);
+	wprintw(get_window(), "CHECKN : %d", vm->cyclen);
 	wmove(get_window(), 11, MEM_WIDTH + 4);
-	wprintw(get_window(), "PROCESS : %d", get_process_quan(vm));
+	wprintw(get_window(), "LIVEN : %d", vm->liven);
 	wmove(get_window(), 13, MEM_WIDTH + 4);
+	wprintw(get_window(), "PROCESS : %d", get_process_quan(vm));
+	wmove(get_window(), 15, MEM_WIDTH + 4);
 	wprintw(get_window(), "IS_DEBUG : %d", g_is_debug);
 	cw_vs_print_players(vm);
 }
 
 void	cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena)
 {
-	int		i;
-	int		x;
-	int		y;
-	char	to_print;
+	int				i;
+	int				x;
+	int				y;
+	unsigned char	to_print;
 
 	while (prcs)
 	{

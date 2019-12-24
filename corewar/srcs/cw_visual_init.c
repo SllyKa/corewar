@@ -18,6 +18,8 @@ void	make_colors(void)
 	init_pair(2, 1, 0);
 	init_pair(3, 3, 0);
 	init_pair(4, 4, 0);
+	init_pair(5, 5, 0);
+	init_pair(6, 6, 0);
 }
 
 void	init_visual(void)

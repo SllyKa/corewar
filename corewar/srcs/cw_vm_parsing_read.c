@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_vm_parsing_read.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 18:36:46 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/21 18:36:48 by bjesse           ###   ########.fr       */
+/*   Updated: 2019/12/26 20:57:49 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void	read_champ_name(t_plr_ardata *plr, int fd)
 	plr->name[PROG_NAME_LENGTH] = '\0';
 }
 
-void	read_code_comment(int fd)
+void	read_code_comment(t_plr_ardata *plr, int fd)
 {
-	char	buff[COMMENT_LENGTH];
-
-	if (read(fd, buff, COMMENT_LENGTH) != COMMENT_LENGTH)
+	if (read(fd, plr->comment, COMMENT_LENGTH) != COMMENT_LENGTH)
 		error_exit("bad comment!\n");
+	plr->comment[COMMENT_LENGTH] = '\0';
 }
 
 void	read_zero_bytes(int fd)

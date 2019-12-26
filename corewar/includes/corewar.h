@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 02:44:43 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 20:58:36 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int plrnum, size_t size);
 
 void			error_exit(char *str);
 void			read_champ_name(t_plr_ardata *plr, int fd);
-void			read_code_comment(int fd);
+void			read_code_comment(t_plr_ardata *plr, int fd);
 void			read_zero_bytes(int fd);
 void			read_code_size(t_plr_ardata *plr, int fd);
 void			read_champ_code(t_plr_ardata *plr, int fd);

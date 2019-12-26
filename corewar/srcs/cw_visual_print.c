@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 19:14:27 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/24 02:08:53 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:50:28 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info)
 		y = i / 64 + 1;
 		x = 2 * i % 128;
 		x += x / 2;
-		if (arena_info[i] > 4)
-			arena_info[i] = 0;
+		//if (arena_info[i] > 4)
+		//	arena_info[i] = 0;
 		mvwaddch(get_window(), y, x + 1,
 		ft_itoa_char(arena[i] / 16) | COLOR_PAIR(arena_info[i]));
 		mvwaddch(get_window(), y, x + 2,
@@ -65,7 +65,7 @@ void	cw_vs_print_info(t_vm *vm)
 	wmove(get_window(), 7, MEM_WIDTH + 4);
 	wprintw(get_window(), "CYCLE_TO_DIE : %d", vm->cycles_to_die);
 	wmove(get_window(), 9, MEM_WIDTH + 4);
-	wprintw(get_window(), "CHECKN : %d", vm->cyclen);
+	wprintw(get_window(), "CHECKN : %d", vm->checkn);
 	wmove(get_window(), 11, MEM_WIDTH + 4);
 	wprintw(get_window(), "LIVEN : %d", vm->liven);
 	wmove(get_window(), 13, MEM_WIDTH + 4);

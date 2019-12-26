@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 19:14:30 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/24 02:43:07 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:20:46 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info);
 void	cw_vs_print_players(t_vm *vm);
 void	cw_vs_print_info(t_vm *vm);
 void	cw_vs_print_prcs(t_prcs *prcs, unsigned char *arena);
+void	cw_vs_print_win(t_vm *vm, char *name);
 
 #endif

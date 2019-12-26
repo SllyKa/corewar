@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 12:50:38 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 00:44:41 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 22:53:20 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void *data, size_t size)
 	{
 		delsize = (adrs + size) - MEM_SIZE;
 		ft_memcpy(field + adrs, data, size - delsize);
-		ft_memcpy(field, data + delsize, delsize);
+		ft_memcpy(field, data + (size - delsize), delsize);
 	}
 }
 

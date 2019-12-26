@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:11:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 02:29:43 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 18:11:23 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void		st(t_vm *vm, t_prcs *p)
 		reverse_reg(revreg);
 		vm_writeb(vm->field, vm_add_address(p->pc, t), revreg, REG_SIZE);
 		vm_vis_writeb(vm->vsfield, vm_add_address(p->pc, t),
-		r_geti(p->regs[0]) * -1, REG_SIZE);
+		p->uid, REG_SIZE);
 		free_rget(revreg);
 	}
 }

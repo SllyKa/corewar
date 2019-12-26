@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chk_commands.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 11:52:16 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/19 16:11:31 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/26 22:43:41 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ t_command			*chk_commands(t_cnt *cnt)
 			ft_error("Invalid command", cnt->pos, i);
 		tmp = cmnd;
 	}
+	else
+    	ft_error("No commands", 3, 0);
 	while (cnt && (cnt->next || !(tmp->cmnd)))
 	{
 		if (tmp->cmnd)

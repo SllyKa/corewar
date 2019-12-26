@@ -7,8 +7,8 @@ live:
 	ld		%0, r16
 	fork	%7
 	zjmp	%:live
-	ld		%:-4, r3
-	st		r3, %:copy
+	aff		r1
+	ld		%-4, r3
+	st		r3, 20
 	ld		%-18, r3
-	st		r3, %:copy
-copy:
+	st		r3, 16

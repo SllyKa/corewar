@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 20:26:22 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 19:05:18 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ void		cw_vm_cycle_set(t_vm *vm)
 	if (vm->liven >= NBR_LIVE)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
-		vm->checkn = 1;
+		vm->checkn = 0;
 	}
 	else
 		(vm->checkn)++;
-	if (vm->checkn == MAX_CHECKS + 1)
+	if (vm->checkn == MAX_CHECKS)
 	{
 		vm->cycles_to_die -= CYCLE_DELTA;
-		vm->checkn = 1;
+		vm->checkn = 0;
 	}
 	cw_vm_upd_live(vm);
 }

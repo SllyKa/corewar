@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cw_vm_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 18:36:42 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/21 18:36:43 by bjesse           ###   ########.fr       */
+/*   Updated: 2019/12/26 20:58:50 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_plr_ardata	*create_plrdata(void)
 
 	new_plrdata = (t_plr_ardata*)malloc(sizeof(t_plr_ardata));
 	new_plrdata->name = (char*)malloc((PROG_NAME_LENGTH + 1) * sizeof(char));
+	new_plrdata->comment = (char*)malloc((COMMENT_LENGTH + 1)* sizeof(char));
 	new_plrdata->liven = 0;
 	new_plrdata->next = NULL;
 	return (new_plrdata);
@@ -77,7 +78,7 @@ void				parse_champ(t_plr_ardata **plr, int champ_id, int fd)
 	read_champ_name(new_plr, fd);
 	read_zero_bytes(fd);
 	read_code_size(new_plr, fd);
-	read_code_comment(fd);
+	read_code_comment(new_plr, fd);
 	read_zero_bytes(fd);
 	read_champ_code(new_plr, fd);
 	add_plr_to_list(plr, new_plr);

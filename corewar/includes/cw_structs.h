@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 13:59:51 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 02:41:02 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/26 20:55:32 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_plr_ardata
 {
 	int					uid;
 	char				*name;
+	char				*comment;
 	char				*data;
 	size_t				liven;
 	size_t				data_size;

@@ -1,2 +1,4 @@
 1. Car.cor is too long check it further
-2. Нет кода
+2. relink make in asm
+3. Empty file to asm
+4. Check asm - stop at ultimate-urrender.cor

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 02:17:24 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 03:05:29 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/27 16:12:10 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ extern char	g_flags;
 
 int		cw_vm_chk_memdump(t_vm *vm)
 {
-	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen - 1)))
+	if ((g_memdmp > 0) && (g_memdmp == (int)(vm->cyclen)))
 	{
 		if ((2 & g_flags) == 2)
 			pause_game();

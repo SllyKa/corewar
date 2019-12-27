@@ -1,2 +1,3 @@
-.name "Emty"
+.name "Empty"
 .comment "i was here"
+label:

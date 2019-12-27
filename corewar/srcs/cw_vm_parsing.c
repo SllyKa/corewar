@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 18:36:42 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/26 20:58:50 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/27 20:33:43 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_plr_ardata	*create_plrdata(void)
 
 	new_plrdata = (t_plr_ardata*)malloc(sizeof(t_plr_ardata));
 	new_plrdata->name = (char*)malloc((PROG_NAME_LENGTH + 1) * sizeof(char));
-	new_plrdata->comment = (char*)malloc((COMMENT_LENGTH + 1)* sizeof(char));
+	new_plrdata->comment = (char*)malloc((COMMENT_LENGTH + 1) * sizeof(char));
 	new_plrdata->liven = 0;
 	new_plrdata->next = NULL;
 	return (new_plrdata);

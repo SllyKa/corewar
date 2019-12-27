@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 17:25:01 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/26 22:54:48 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/27 20:33:25 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,13 @@ void		sti(t_vm *vm, t_prcs *prcs)
 	int				s1;
 	int				s2;
 
-	//ft_printf("sti!\n");
 	typebyte = deref_pntr(vm->field, vm_add_address(prcs->pc, 1));
 	s1 = CODE_REG_SIZE;
 	reg = ops_read_treg(vm->field, vm_add_address(prcs->pc, 1 + 1));
-	//ft_printf("reg_val: %x\n", r_geti(prcs->regs[reg - 1]));
 	val1 = arrgs_chse_dirt(vm, prcs, vm_core_ops_argn_type(typebyte, 2), &s1);
-	//ft_printf("val1: %d\n", val1);
 	s2 = s1 + CODE_REG_SIZE;
 	val1 = (val1 + arrgs_chse_dirt(vm, prcs,
 	vm_core_ops_argn_type(typebyte, 3), &s2)) % IDX_MOD;
-	//ft_printf("val2: %d\n", val1);
-	//ft_printf("addr: %d\n", vm_add_address(prcs->pc, val1));
 	vm_writebreg(vm->field, vm_add_address(prcs->pc, val1),
 	prcs->regs[reg - 1], REG_SIZE);
 	vm_vis_writeb(vm->vsfield, vm_add_address(prcs->pc, val1),

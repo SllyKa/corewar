@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 19:14:27 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/26 18:50:28 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/27 20:33:00 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	cw_vs_print_memory(unsigned char *arena, unsigned char *arena_info)
 		y = i / 64 + 1;
 		x = 2 * i % 128;
 		x += x / 2;
-		//if (arena_info[i] > 4)
-		//	arena_info[i] = 0;
+		if (arena_info[i] > 4)
+			arena_info[i] = 0;
 		mvwaddch(get_window(), y, x + 1,
 		ft_itoa_char(arena[i] / 16) | COLOR_PAIR(arena_info[i]));
 		mvwaddch(get_window(), y, x + 2,

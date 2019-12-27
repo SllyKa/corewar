@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 11:52:16 by fsinged           #+#    #+#             */
-/*   Updated: 2019/12/26 22:43:41 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/12/27 20:36:39 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_command			*chk_commands(t_cnt *cnt)
 		tmp = cmnd;
 	}
 	else
-    	ft_error("No commands", 3, 0);
+		ft_error("No commands", 3, 0);
 	while (cnt && (cnt->next || !(tmp->cmnd)))
 	{
 		if (tmp->cmnd)

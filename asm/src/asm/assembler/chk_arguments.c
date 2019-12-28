@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:35:45 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/19 16:07:38 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/28 13:43:14 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,13 @@ int			is_treg(char *arg)
 	size_t i;
 
 	i = 1;
-	if (arg[0] == 'r')
+	if (arg[0] == 'r' && arg[i] && ft_isdigit(arg[i]))
 		while (arg[i] && ft_isdigit(arg[i]))
 			i++;
 	else
 		return (0);
 	if (arg[i] == '\0')
-	{
-		i = ft_atoi(arg + 1);
-		return (i <= REG_NUMBER);
-	}
+		return (1);
 	return (0);
 }
 
@@ -59,6 +56,8 @@ int			is_tind(char *arg)
 		i++;
 	else if (flag)
 		return (0);
+	if (!(arg[i] && ft_isdigit(arg[i])))
+		return (0);
 	while (arg[i] && ft_isdigit(arg[i]))
 		i++;
 	return (arg[i] == '\0');
@@ -82,6 +81,8 @@ int			is_tdir(char *arg)
 		i++;
 	else if (arg[i] == '0' && arg[i + 1] == 'x')
 		i += 2;
+	if (!(arg[i] && ft_isdigit(arg[i])))
+		return (0);
 	while (arg[i] && ft_isdigit(arg[i]))
 		i++;
 	return (arg[i] == '\0');

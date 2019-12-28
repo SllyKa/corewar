@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 16:14:38 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/22 14:05:05 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/28 12:12:08 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int		rewrite_label(t_command *head, t_command *cmnd, char *arg)
 		arg++;
 	else if (arg[0] == DIRECT_CHAR && arg[1] == LABEL_CHAR)
 		arg += 2;
-	if (ft_strnequ(cmnd->label, arg, ft_strlen(arg)))
+	if (ft_strnequ(cmnd->label, arg, ft_strlen(arg)) &&
+		cmnd->label[ft_strlen(arg)] == LABEL_CHAR)
 		return (0);
 	size = 0;
 	while (!(ft_strnequ(head->label, arg, ft_strlen(arg)) &&

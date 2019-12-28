@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:56:44 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/08 15:44:57 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/28 12:23:48 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		chk_name(char *content, t_header *header, size_t pos)
 	size_t	name_size;
 
 	name_size = 0;
-	if (!(ft_strnequ(content + pos, NAME_CMD_STRING,
+	if (!content || !(ft_strnequ(content + pos, NAME_CMD_STRING,
 		ft_strlen(NAME_CMD_STRING))))
 		ft_error("No name", 0, pos);
 	pos += ft_strlen(NAME_CMD_STRING);
@@ -51,7 +51,7 @@ static void		chk_comment(char *content, t_header *header, size_t pos)
 	size_t	cmnt_size;
 
 	cmnt_size = 0;
-	if (!(ft_strnequ(content + pos, COMMENT_CMD_STRING,
+	if (!content || !(ft_strnequ(content + pos, COMMENT_CMD_STRING,
 		ft_strlen(COMMENT_CMD_STRING))))
 		ft_error("No comment", 1, pos);
 	pos += ft_strlen(COMMENT_CMD_STRING);
@@ -78,9 +78,13 @@ t_command		*validation(t_cnt *cnt, t_header *header)
 	size_t		i;
 
 	i = skip_spaces(&cnt, 0);
+	if (!cnt)
+		read_error("File is empty");
 	chk_name(cnt->line, header, i);
 	cnt = cnt->next;
 	i = skip_spaces(&cnt, 0);
+	if (!cnt)
+		read_error("Only name in file");
 	chk_comment(cnt->line, header, i);
 	cmnd = chk_commands(cnt->next);
 	chk_labels(cmnd);

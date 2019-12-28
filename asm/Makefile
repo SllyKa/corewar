@@ -6,7 +6,7 @@
 #    By: fsinged <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/02 13:23:02 by fsinged           #+#    #+#              #
-#    Updated: 2019/12/05 17:01:26 by fsinged          ###   ########.fr        #
+#    Updated: 2019/12/28 16:01:25 by fsinged          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -43,9 +43,11 @@ all:$(OBJ) $(ASM)
 $(OBJ):
 	@mkdir -p $(OBJ)
 
-$(ASM):$(ASMLIBFT) $(ASMOBJDIR) $(ASM_ASSEMBLER_OBJDIR) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS)
-	@make -C $(ASMLIBFT)
+$(ASM):$(ASMLNAM) $(ASMOBJDIR) $(ASM_ASSEMBLER_OBJDIR) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS)
 	@$(CC) $(CFLAGS) $(ASMLNAM) $(ASM_INC) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS) -o $(ASM)
+
+$(ASMLNAM):
+	@make -C $(ASMLIBFT)
 
 $(ASMOBJDIR):
 	@mkdir -p $(ASMOBJDIR)

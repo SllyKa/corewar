@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   skip_space.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 15:09:35 by fsinged           #+#    #+#             */
-/*   Updated: 2019/12/26 20:31:08 by gbrandon         ###   ########.fr       */
+/*   Updated: 2019/11/08 12:20:20 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t		skip_space(char *content, size_t place)
 
 size_t		skip_spaces(t_cnt **cnt, size_t i)
 {
-	while ((*cnt) != NULL && (*cnt)->line &&
+	while ((*cnt) != NULL &&
 		((*cnt)->line[(i += skip_space((*cnt)->line, i))] == '\0' ||
 		(*cnt)->line[i] == COMMENT_CHAR || (*cnt)->line[i] == ';') &&
 		((i = 0) || 1))

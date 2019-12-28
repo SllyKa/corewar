@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 11:59:40 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/19 16:57:16 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/28 13:25:41 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static int	size_of_arg(char *data)
 
 	size = 0;
 	while (data[size] != SEPARATOR_CHAR && !(is_space(data[size])) &&
-		data[size] != '\0')
+		data[size] != '\0' && data[size] != COMMENT_CHAR &&
+		data[size] != ';')
 		size++;
 	if (is_space(data[size]) && data[size + skip_space(data, size)] == '-')
 	{

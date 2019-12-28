@@ -65,8 +65,10 @@ $(OBJS): $(OBJSDIR)/%.o : $(SRCSDIR)/%.c $(HEADERDIR)/$(HEADER)
 
 clean:
 	rm -rf $(OBJSDIR)/*.o
+	$(MAKE) clean -C $(LIBDIR)
 
 fclean: clean
 	rm -rf $(NAME)
+	$(MAKE) fclean -C $(LIBDIR)
 
 re: fclean all

@@ -5,12 +5,12 @@ DIR_cw=corewar
 
 .PHONY: all clean fclean re
 
-all: $(DIR_asm)/$(NAME_asm) $(DIR_cw)/$(NAME_cw)
+all: NAME_asm NAME_cw
 
-$(DIR_asm)/$(NAME_asm):
+NAME_asm:
 	cd $(DIR_asm) && $(MAKE)
 
-$(DIR_cw)/$(NAME_cw):
+NAME_cw:
 	cd $(DIR_cw) && $(MAKE)
 
 clean:

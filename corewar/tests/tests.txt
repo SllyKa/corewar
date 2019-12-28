@@ -1,4 +1,1 @@
-1. redesign main make
 2. relink make in asm
-3. Empty file to asm
-4. Check asm - stop at ultimate-urrender.cor

@@ -33,7 +33,7 @@ SRCS= $(OBJS:.o=.c);
 
 .PHONY: all debug clean fclean re
 
-all: $(NAME)
+all: lib $(NAME)
 
 #
 #	Debug mode settings
@@ -46,11 +46,14 @@ debug: $(NAME)
 #	Release
 #
 
-$(NAME): $(LIB) $(OBJS)
+$(NAME): $(LIBDIR)/$(LIB) $(OBJS)
 	$(CC) $(CC_FLAGS) $(OBJS) -o $@ -I$(HEADERDIR) -I$(LIBHEADERDIR) -L$(LIBDIR) -l$(LIBSHORT) -l$(LIBNCURSES)
 
-$(LIB):
+$(LIBDIR)/$(LIB):
 	cd $(LIBDIR) && $(MAKE) -s
+
+lib:
+	$(MAKE) -C $(LIBDIR)
 
 $(OBJS): $(OBJSDIR)/%.o : $(SRCSDIR)/%.c $(HEADERDIR)/$(HEADER)
 	mkdir -p $(OBJSDIR)

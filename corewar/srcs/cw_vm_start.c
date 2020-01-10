@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 06:12:39 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 01:31:26 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/09 18:17:44 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void			cw_vm_usage(void)
 {
 	ft_printf("\n%{green}Usage:%{eoc} ./corewar [-dump N -v N | -g] [-a] \
 [[-n number] champ1.cor] ...\n\n");
+	ft_printf("\t%{blue}-o%{eoc}\t: Origin VM mode\n");
 	ft_printf("\t%{blue}-a%{eoc}\t: Prints output from aff (disabled by d\
 efault)\n");
 	ft_printf("\t%{blue}-n    N%{eoc}\t: Sets number to the Player (assig\

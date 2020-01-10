@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 06:15:17 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/26 20:59:30 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 08:21:27 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ void			cw_vm_won_player(t_vm *vm)
 {
 	t_plr_ardata	*pdata;
 
-	if (g_memdmp > 0)
-		return ;
 	pdata = vm->plrdata;
 	while (pdata)
 	{
@@ -82,8 +80,11 @@ void			cw_vm_won_player(t_vm *vm)
 		{
 			if ((2 & g_flags) == 2)
 				cw_vs_print_win(vm, pdata->name);
-			else
+			else if ((4 & g_flags) != 4)
 				ft_printf("Player %d (%s) won\n", pdata->uid, pdata->name);
+			else
+				ft_printf("Contestant %d, \"%s\", has won !\n",
+				pdata->uid, pdata->name);
 		}
 		pdata = pdata->next;
 	}

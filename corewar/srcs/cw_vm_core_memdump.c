@@ -6,30 +6,59 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:12:25 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:12:08 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/09 18:33:23 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	cw_vm_memdump(t_vm *arena)
+extern int	g_flags;
+
+static void	cw_vm_memdump_origin_print(t_vm *vm)
 {
 	size_t				i;
-	size_t				oct_num;
 	unsigned char		*arena_f;
 
 	i = 0;
-	oct_num = 32;
-	arena_f = arena->field;
-	while (i < arena->field_size)
+	arena_f = vm->field;
+	while (i < vm->field_size)
 	{
-		if ((i == 0) || (i % 32 == 0))
+		if ((i != 0) && (i % 64 == 0))
+			ft_printf("\n");
+		if ((i == 0) || (i % 64 == 0))
+			ft_printf("0x%0.4x : ", i);
+		ft_printf("%.2x", *arena_f);
+		arena_f++;
+		i++;
+		ft_printf(" ");
+	}
+	ft_printf("\n");
+}
+
+static void	cw_vm_memdump_print(t_vm *vm, size_t octnum)
+{
+	size_t				i;
+	unsigned char		*arena_f;
+
+	i = 0;
+	arena_f = vm->field;
+	while (i < vm->field_size)
+	{
+		if ((i == 0) || (i % octnum == 0))
 			ft_printf("\n0x%0.4x : ", i);
 		ft_printf("%.2x", *arena_f);
 		arena_f++;
 		i++;
-		if (i % 32 != 0)
+		if (i % octnum != 0)
 			ft_printf(" ");
 	}
 	ft_printf("\n");
+}
+
+void		cw_vm_memdump(t_vm *vm)
+{
+	if ((4 & g_flags) != 4)
+		cw_vm_memdump_print(vm, 32);
+	else
+		cw_vm_memdump_origin_print(vm);
 }

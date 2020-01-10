@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 15:28:42 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/27 17:44:49 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 01:36:36 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	cw_vm_check(t_vm *vm)
 	prev = NULL;
 	while (prcs)
 	{
-		if (prcs->livecycle <= (int)(vm->cyclen - vm->cycles_to_die))
+		if (prcs->livecycle < (int)(vm->cyclen - vm->cycles_to_die))
 		{
 			cw_vm_flags_verb_deaths(prcs, vm);
 			prcs = cw_del_prcs(vm, prcs, prev);
@@ -112,5 +112,5 @@ int			cw_fight(t_vm *vm)
 		}
 		cw_vm_check(vm);
 	}
-	return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 16:36:06 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:14:45 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 08:21:14 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,24 @@
 
 char			*r_mov(char *reg, void *data, size_t size)
 {
-	int		st;
+	int				st;
+	unsigned char	sign;
+	size_t			i;
 
+	i = 0;
 	st = REG_SIZE - size;
-	ft_bzero(reg, REG_SIZE);
+	if (reg == data)
+		return (data);
+	sign = (((((char*)data)[3] >> 7 & 1) == 1) ? '\xff' : 0);
+	while (i < REG_SIZE)
+	{
+		reg[i] = sign;
+		i++;
+	}
 	if (st == 0)
 		reg = ft_memcpy(reg, data, size);
 	else if (st > 0)
-		reg = ft_memcpy(&(reg[st - 1]), data, size);
+		ft_memcpy(reg, data, size);
 	else if (st < 0)
 	{
 		st *= -1;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/22 05:03:23 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 22:13:30 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/09 19:01:26 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	cw_vm_flags_verb_deaths(t_prcs *prc, t_vm *vm)
 		return ;
 	if ((16 & g_verbf) == 16)
 		ft_printf("Process %d is dead for %d cycles (CTD: %d)\n",
-r_geti(prc->regs[0]), vm->cyclen - 1 - prc->livecycle, vm->cycles_to_die);
+	prc->uid, vm->cyclen - 1 - prc->livecycle, vm->cycles_to_die);
 }

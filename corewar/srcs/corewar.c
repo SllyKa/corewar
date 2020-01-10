@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 06:10:41 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 01:31:08 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 06:03:00 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int		main(int argc, char **argv)
 		cw_vs_print_frame(vm);
 		pause_game();
 	}
-	cw_fight(vm);
-	cw_vm_won_player(vm);
+	if (cw_fight(vm))
+		cw_vm_won_player(vm);
 	cw_free_vm(vm);
 	return (0);
 }

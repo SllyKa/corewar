@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 12:21:52 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/26 20:58:36 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 08:21:52 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int				arrgs_chse(t_vm *vm, t_prcs *prcs,
 unsigned char argtype, int *s);
 int				arrgs_chse_dirt(t_vm *vm, t_prcs *prcs,
 unsigned char argtype, int *s);
+void			lld_bytesw_count(t_vm *vm, t_prcs *prcs, size_t cnt);
 
 int				ops_read_tdir(unsigned char *field, size_t addr, size_t size);
 int				ops_read_treg(unsigned char *field, size_t addr);

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:31:32 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/26 19:05:18 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/10 08:16:21 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,12 @@ void		cw_vm_cycle_set(t_vm *vm)
 
 void		cw_vm_checkg_flag(void)
 {
-	if ((2 & g_flags) == 2)
+	if ((4 & g_flags) == 4)
+	{
+		g_flags = 4;
+		g_verbf = 1;
+	}
+	else if ((2 & g_flags) == 2)
 	{
 		g_flags |= 1;
 		g_verbf |= 1;

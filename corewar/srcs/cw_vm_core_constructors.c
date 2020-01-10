@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 14:43:50 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 13:08:49 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/09 20:53:44 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_prcs			*init_process_start(int r1, size_t pc)
 	new_prcs->pc = pc;
 	new_prcs->uid = r1;
 	new_prcs->curop = 0;
-	new_prcs->livecycle = 0;
+	new_prcs->livecycle = -1;
 	new_prcs->waitcycle = 0;
 	new_prcs->nextop = 0;
 	new_prcs->regs = init_regs(r1);

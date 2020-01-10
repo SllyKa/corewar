@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/20 21:15:08 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/22 07:29:10 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/09 18:22:10 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int *num)
 			g_flags = g_flags | 1;
 		else if (argv[*i][1] == 'g' && argv[*i][2] == '\0')
 			g_flags = g_flags | 2;
+		else if (argv[*i][1] == 'o' && argv[*i][2] == '\0')
+			g_flags = g_flags | 4;
 		else if (argv[*i][1] == 'n' && argv[*i][2] == '\0' &&
 		(check_next_arg(argc, argv, i, num) > 0))
 			return (2);

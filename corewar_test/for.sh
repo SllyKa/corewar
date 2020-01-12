@@ -1,7 +1,8 @@
-MAPS="Eraser.cor ultima.cor"
-NUM=2100
+MAPS="helltrain.cor justin_bee.cor"
+NUM=11500
 MIN=NUM
-MAX=NUM+200
+MAX=NUM+100
+echo "" > diff.diff
 for (( i=$MIN; i <= $MAX; i++ ))
 do
 ../vm_champs/corewar $MAPS -d $i > their;

@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 21:09:31 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/24 02:05:58 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/12 18:10:55 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ static int		chk_types_byte(unsigned char opcode, unsigned char typebyte)
 		return (-1);
 	if ((arg & g_op_tab[opcode - 1].argtype[0]) != arg)
 		return (-1);
+	if (g_op_tab[opcode - 1].argnum < 2)
+		return (1);
 	if (!(arg = typebyte_to_arg_type((typebyte >> 4) & 3))
 	&& (g_op_tab[opcode - 1].argtype[1]))
 		return (-1);
 	if ((arg & g_op_tab[opcode - 1].argtype[1]) != arg)
 		return (-1);
+	if (g_op_tab[opcode - 1].argnum < 3)
+		return (1);
 	if (!(arg = typebyte_to_arg_type((typebyte >> 2) & 3))
 	&& (g_op_tab[opcode - 1].argtype[2]))
 		return (-1);

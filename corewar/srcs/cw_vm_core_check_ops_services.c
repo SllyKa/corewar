@@ -6,7 +6,7 @@
 /*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/08 12:37:23 by gbrandon          #+#    #+#             */
-/*   Updated: 2019/12/23 22:09:18 by gbrandon         ###   ########.fr       */
+/*   Updated: 2020/01/12 20:06:44 by gbrandon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				chk_reg_valid(t_vm *vm, t_prcs *prc, unsigned char opcode,
 
 	i = 0;
 	tonext = ((g_op_tab[opcode - 1].istypeb == 0) ? 1 : 2);
-	while (i < 3)
+	while (i < g_op_tab[opcode - 1].argnum)
 	{
 		if ((T_REG & vm_core_ops_argn_type(typebyte, i + 1)) == T_REG)
 		{

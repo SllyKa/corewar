@@ -15,6 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 OBJDIR = OBJ/
 
 ASM = asm
+DISASM = disasm
 ASMLIBFT = src/asm/libft/
 ASMLNAM = $(addprefix $(ASMLIBFT), libft.a)
 
@@ -24,6 +25,8 @@ ASM_INC = -I $(ASMINC) -I $(ASMLIBFT)
 
 ASMSRCDIR = src/asm/
 ASMSRC = asm.c ft_error.c
+
+ASM_DISASSEMBLER_SRC = cw_vm_parsing_read.c cw_vm_parsing.c disassembler.c op.c
 
 ASM_ASSEMBLER_SRCDIR = $(ASMSRCDIR)assembler/
 ASM_ASSEMBLER_SRC = assembler.c chk_arguments.c chk_commands.c chk_lables.c cmnd_size.c \
@@ -35,16 +38,19 @@ ASMOBJ = $(ASMSRC:.c=.o)
 ASMOBJS = $(addprefix $(ASMOBJDIR), $(ASMOBJ))
 
 ASM_ASSEMBLER_OBJDIR = $(ASMOBJDIR)assembler/
+ASM_DISASSEMBLER_OBJDIR = $(ASMOBJDIR)disassembler/
 ASM_ASSEMBLER_OBJ = $(ASM_ASSEMBLER_SRC:.c=.o)
+ASM_DISASSEMBLER_OBJ = $(ASM_DISASSEMBLER_SRC:.c=.o)
 ASM_ASSEMBLER_OBJS = $(addprefix $(ASM_ASSEMBLER_OBJDIR), $(ASM_ASSEMBLER_OBJ))
+ASM_DISASSEMBLER_OBJS = $(addprefix $(ASM_DISASSEMBLER_OBJDIR), $(ASM_DISASSEMBLER_OBJ))
 
 all:$(OBJ) $(ASM)
 
 $(OBJ):
 	@mkdir -p $(OBJ)
 
-$(ASM):$(ASMLNAM) $(ASMOBJDIR) $(ASM_ASSEMBLER_OBJDIR) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS)
-	@$(CC) $(CFLAGS) $(ASMLNAM) $(ASM_INC) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS) -o $(ASM)
+$(ASM):$(ASMLNAM) $(ASMOBJDIR) $(ASM_ASSEMBLER_OBJDIR) $(ASM_DISASSEMBLER_OBJDIR) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS) $(ASM_DISASSEMBLER_OBJS)
+	@$(CC) $(CFLAGS) $(ASMLNAM) $(ASM_INC) $(ASMOBJS) $(ASM_ASSEMBLER_OBJS) $(ASM_DISASSEMBLER_OBJS) -o $(ASM)
 
 $(ASMLNAM):
 	@make -C $(ASMLIBFT)
@@ -54,6 +60,9 @@ $(ASMOBJDIR):
 
 $(ASM_ASSEMBLER_OBJDIR):
 	@mkdir -p $(ASM_ASSEMBLER_OBJDIR)
+
+$(ASM_DISASSEMBLER_OBJDIR):
+	@mkdir -p $(ASM_DISASSEMBLER_OBJDIR)
 
 $(ASMOBJDIR)%.o:$(ASMSRCDIR)%.c $(ASMHEADERS)
 	@$(CC) $(CFLAGS) -c $(ASM_INC) $< -o $@

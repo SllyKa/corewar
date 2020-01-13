@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "asm.h"
+#include "disasm.h"
 
 static int	is_filename(char *filename, char *dot)
 {
@@ -29,6 +30,8 @@ int			main(int argc, char **argv)
 {
 	if (argc == 2 && is_filename(*(argv + 1), ".s"))
 		assembler(*(argv + 1));
+	else if (argc == 2 && is_filename(*(argv + 1), ".cor"))
+		disassembler(*(argv + 1));
 	else
 		print_help();
 	return (0);

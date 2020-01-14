@@ -5,11 +5,10 @@
 # include <fcntl.h>
 # include "op.h"
 
-
 #include "stdio.h"
 
 
-
+# define CODE_REG_SIZE	1
 typedef struct	s_plr_ardata
 {
 	int					uid;
@@ -51,6 +50,7 @@ void	read_code_comment(t_plr_ardata *plr, int fd);
 void	read_zero_bytes(int fd);
 void	read_code_size(t_plr_ardata *plr, int fd);
 void	read_champ_code(t_plr_ardata *plr, int fd);
+int				check_opsign(char *code);
 
 
 

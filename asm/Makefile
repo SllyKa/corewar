@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 OBJDIR = OBJ/
 
 ASM = asm
@@ -26,7 +26,8 @@ ASM_INC = -I $(ASMINC) -I $(ASMLIBFT)
 ASMSRCDIR = src/asm/
 ASMSRC = asm.c ft_error.c
 
-ASM_DISASSEMBLER_SRC = cw_vm_parsing_read.c cw_vm_parsing.c disassembler.c op.c
+ASM_DISASSEMBLER_SRC = cw_vm_parsing_read.c cw_vm_parsing.c disassembler.c op.c \
+cw_vm_core_check_ops.c
 
 ASM_ASSEMBLER_SRCDIR = $(ASMSRCDIR)assembler/
 ASM_ASSEMBLER_SRC = assembler.c chk_arguments.c chk_commands.c chk_lables.c cmnd_size.c \

@@ -65,9 +65,10 @@ void	read_champ_code(t_plr_ardata *plr, int fd)
 {
 	char	buff[1];
 
-	plr->data = (char*)malloc(plr->data_size * sizeof(char));
+	plr->data = (char*)malloc(plr->data_size * sizeof(char) + 100);
 	if (read(fd, plr->data, plr->data_size) != (long long)plr->data_size)
 		error_exit("Wrong exe code: too small!\n");
 	if (read(fd, buff, 1) > 0)
 		error_exit("Wrong exe code: too big!\n");
+	ft_memset(plr->data + plr->data_size, 0, 99);
 }

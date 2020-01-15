@@ -16,6 +16,13 @@ void				error_exit(char *str)
 {
 	read_error(str);
 }
+void free_champ(t_plr_ardata *plr)
+{
+	free(plr->name);
+	free(plr->comment);
+	free(plr->data);
+	free(plr);
+}
 
 static t_plr_ardata	*create_plrdata(void)
 {
@@ -66,6 +73,7 @@ void				add_plr_to_list(t_plr_ardata **plr, t_plr_ardata *new_plr)
 		now_plr = now_plr->next;
 	now_plr->next = new_plr;
 }
+
 
 void				parse_champ(t_plr_ardata **plr, int champ_id, int fd)
 {

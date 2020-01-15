@@ -15,7 +15,7 @@ void write_name(int fd, t_plr_ardata *champ)
 void write_comment(int fd, t_plr_ardata *champ)
 {
 	write(fd, ".comment\t\"", 10);
-	write(fd, champ->comment, ft_strlen(champ->name));
+	write(fd, champ->comment, ft_strlen(champ->comment));
 	write(fd, "\"\n\n", 3);
 }
 
@@ -56,6 +56,66 @@ size_t			pass_bytes(unsigned char typebyte, char command)
 	return (passn);
 }
 
+
+
+char				*arrgs_chse(int fd, char *code, unsigned char argtype, char command)
+{
+	int				reg;
+	int				val;
+
+	val = 0;
+	if (command == 9 || command == 12 || command == 15)
+			write(fd, "%", 1);
+	if (argtype == T_REG)
+	{
+		reg = ops_read_treg(code, 0);
+		write(fd, "r", 1);
+		ft_putnbr_fd(reg, fd);
+		return (code + CODE_REG_SIZE);
+	}
+	else if (argtype == T_DIR)
+	{
+		val = ops_read_tdir(code, 0, typebyte_to_byten(argtype, command));
+		write(fd, "%", 1);
+		ft_putnbr_fd(val, fd);
+		return (code + typebyte_to_byten(argtype, command));
+	}
+	else if (argtype == T_IND)
+	{
+		val = ops_read_tind(code, 0);
+		ft_putnbr_fd(val, fd);
+		return (code + IND_SIZE);
+	}
+	return (code);
+}
+
+void write_arg(int fd, char *code)
+{
+	int i;
+	char command;
+	char typebyte;
+
+	i = 0;
+	command = code[0] - 1;
+	typebyte = code[1];
+	code += 2;
+	while (i < g_op_tab[(unsigned char)command].argnum)
+	{
+		if (i > 0)
+			write(fd, ",", 1);
+		if (command + 1 == 1)
+			code = arrgs_chse(fd, code - 1, T_DIR, command + 1);
+		else if (command + 1 == 9)
+			code = arrgs_chse(fd, code - 1, T_IND, command + 1);
+		else if ((command + 1 == 12) || (command + 1 == 15))
+			code = arrgs_chse(fd, code - 1, T_IND, command + 1);
+		else
+			code = arrgs_chse(fd, code, vm_core_ops_argn_type((unsigned char)typebyte, i + 1), command + 1);
+		i++;
+	}
+}
+
+
 static char	*exec_ops(int fd, char *code)
 {
 	unsigned char		typebyte;
@@ -64,6 +124,8 @@ static char	*exec_ops(int fd, char *code)
 	name = g_op_tab[code[0] - 1].name;
 	write(fd, "\t", 1);
 	write(fd, name, ft_strlen(name));
+	write(fd, "       ", 6 - ft_strlen(name));
+	write_arg(fd, code);
 	write(fd, "\n", 1);
 	if (code[0] == 1)
 		code += 1 + DIR_SIZE;
@@ -99,7 +161,6 @@ void disassembler(char *filename)
 	parse_champ(&champ, 0, fd);
 	close(fd);
 	filename[ft_strlen(filename) - 3] = 's';
-	filename[ft_strlen(filename) - 4] = 'D';
 	filename[ft_strlen(filename) - 2] = '\0';
 	printf("%s\n", filename);
 	if ((fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0644)) < 0)
@@ -107,5 +168,6 @@ void disassembler(char *filename)
 	write_name(fd, champ);
 	write_comment(fd, champ);
 	write_code(fd, champ->data);
+	free_champ(champ);
 	close(fd);
 }

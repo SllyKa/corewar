@@ -43,6 +43,7 @@ void disassembler(char *filename);
 
 
 void				parse_champ(t_plr_ardata **plr, int champ_id, int fd);
+void free_champ(t_plr_ardata *plr);
 
 void				error_exit(char *str);
 void	read_champ_name(t_plr_ardata *plr, int fd);
@@ -51,6 +52,13 @@ void	read_zero_bytes(int fd);
 void	read_code_size(t_plr_ardata *plr, int fd);
 void	read_champ_code(t_plr_ardata *plr, int fd);
 int				check_opsign(char *code);
+
+
+int				ops_read_treg(char *field, size_t addr);
+int				ops_read_tdir(char *field, size_t addr, size_t size);
+int				ops_read_tind(char *field, size_t addr);
+unsigned char	vm_core_ops_argn_type(unsigned char typebyte, size_t argn);
+
 
 
 

@@ -119,6 +119,18 @@ void			*free_vm_readb(char *bt)
 	return (bt);
 }
 
+
+int				ops_read_tind(char *field, size_t addr)
+{
+	char	*tind;
+	int				resoffst;
+
+	tind = vm_readb(field, addr, IND_SIZE);
+	resoffst = vm_btoi((unsigned char*)tind, IND_SIZE);
+	free_vm_readb(tind);
+	return (resoffst);
+}
+
 int				ops_read_treg(char *field, size_t addr)
 {
 	char	*treg;
@@ -172,6 +184,17 @@ int				chk_reg_valid(char *code, unsigned char opcode,
 		i++;
 	}
 	return (0);
+}
+
+int				ops_read_tdir(char *field, size_t addr, size_t size)
+{
+	char	*tdir;
+	int				res;
+
+	tdir = vm_readb(field, addr, size);
+	res = vm_btoi((unsigned char*)tdir, size);
+	tdir = free_vm_readb(tdir);
+	return (res);
 }
 
 int				chk_opcode(unsigned char opcode)

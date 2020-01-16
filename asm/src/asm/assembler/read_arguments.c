@@ -18,7 +18,7 @@ static int	chk_num_of_args(t_command *cmnd, char *cmd)
 		ft_strequ(cmd, FFORK) || ft_strequ(cmd, LFORK))
 		return (cmnd->arg1 ? 1 : 0);
 	else if (ft_strequ(cmd, LD) || ft_strequ(cmd, ST) ||
-			 ft_strequ(cmd, LLD))
+			ft_strequ(cmd, LLD))
 		return (cmnd->arg1 && cmnd->arg2 ? 1 : 0);
 	return (cmnd->arg1 && cmnd->arg2 && cmnd->arg3 ? 1 : 0);
 }
@@ -90,7 +90,7 @@ int			read_arguments(char *data, t_command *cmnd)
 	}
 	if (!(tmp != -1 && (data[i] == '\0' || data[i] == ';' ||
 		data[i] == COMMENT_CHAR) && chk_arguments(cmnd) &&
-		  chk_num_of_args(cmnd, cmnd->cmnd)))
+		chk_num_of_args(cmnd, cmnd->cmnd)))
 		return (i);
 	return (-1);
 }

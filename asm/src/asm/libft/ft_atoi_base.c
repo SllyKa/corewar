@@ -6,7 +6,7 @@
 /*   By: fsinged <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 16:15:40 by fsinged           #+#    #+#             */
-/*   Updated: 2019/11/22 13:23:59 by fsinged          ###   ########.fr       */
+/*   Updated: 2019/12/28 18:24:32 by fsinged          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ uintmax_t		ft_atoi_base(char *str, int base)
 	i = 0;
 	max_base = 1;
 	num = 0;
-	while (str[++i])
+	while (str[i] && str[++i])
 		max_base *= base;
 	i = 0;
 	while (str[i])

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_parsing.c                                    :+:      :+:    :+:   */
+/*   disassembler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/21 18:36:42 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/27 20:33:43 by gbrandon         ###   ########.fr       */
+/*   Created: 2020/01/16 20:01:37 by bjesse            #+#    #+#             */
+/*   Updated: 2020/01/16 20:01:39 by bjesse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 void				error_exit(char *str)
 {
 	read_error(str);
-}
-void free_champ(t_plr_ardata *plr)
-{
-	free(plr->name);
-	free(plr->comment);
-	free(plr->data);
-	free(plr);
 }
 
 static t_plr_ardata	*create_plrdata(void)
@@ -73,7 +66,6 @@ void				add_plr_to_list(t_plr_ardata **plr, t_plr_ardata *new_plr)
 		now_plr = now_plr->next;
 	now_plr->next = new_plr;
 }
-
 
 void				parse_champ(t_plr_ardata **plr, int champ_id, int fd)
 {

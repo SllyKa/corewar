@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cw_vm_parsing_read.c                               :+:      :+:    :+:   */
+/*   disassembler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbrandon <gbrandon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bjesse <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/21 18:36:46 by bjesse            #+#    #+#             */
-/*   Updated: 2019/12/26 20:57:49 by gbrandon         ###   ########.fr       */
+/*   Created: 2020/01/16 20:01:37 by bjesse            #+#    #+#             */
+/*   Updated: 2020/01/16 20:01:39 by bjesse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	read_champ_name(t_plr_ardata *plr, int fd)
 {
 	if (read(fd, plr->name, PROG_NAME_LENGTH) != PROG_NAME_LENGTH)
 		error_exit("bad name!\n");
-	printf("%s\n", plr->name);
 	plr->name[PROG_NAME_LENGTH] = '\0';
 }
 

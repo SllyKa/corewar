@@ -12,7 +12,7 @@
 
 #include "disasm.h"
 
-void void_command(void)
+void	void_command(void)
 {
 }
 
@@ -22,7 +22,8 @@ t_op		g_op_tab[17] =
 	{"ld", 2, {T_DIR | T_IND, T_REG, 0}, 2, 5, "load", 1, 0, void_command},
 	{"st", 2, {T_REG, T_IND | T_REG, 0}, 3, 5, "store", 1, 0, void_command},
 	{"add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0, void_command},
-	{"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0, void_command},
+	{"sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0,
+		void_command},
 	{"and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
 		"et (and  r1, r2, r3   r1&r2 -> r3", 1, 0, void_command},
 	{"or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 7, 6,
@@ -35,7 +36,8 @@ t_op		g_op_tab[17] =
 	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
 		"store index", 1, 1, void_command},
 	{"fork", 1, {T_DIR, 0, 0}, 12, 800, "fork", 0, 1, void_command},
-	{"lld", 2, {T_DIR | T_IND, T_REG, 0}, 13, 10, "long load", 1, 0, void_command},
+	{"lld", 2, {T_DIR | T_IND, T_REG, 0}, 13, 10, "long load", 1, 0,
+		void_command},
 	{"lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 14, 50,
 		"long load index", 1, 1, void_command},
 	{"lfork", 1, {T_DIR, 0, 0}, 15, 1000, "long fork", 0, 1, void_command},
